@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.menuLink {
+    @apply text-gray-600 whitespace-nowrap hover:text-white hover:bg-red-500 transition duration-300 py-5 px-3 md:px-3 lg:px-5 h-full;
+ }
+
+ .arrowDown {
+    @apply mx-1 h-2 w-2 -translate-y-1 inline-block border-b-2 border-r-2 border-red-500 transform rotate-45 group-hover:border-white;
+ }
+
+ .subMenu {
+    @apply block px-3 scale-100 hover:bg-red-800 hover:scale-110 transform duration-500 leading-10;
+ }
+
+ .hover-menu .hover-dropdown {
+    @apply block md:hidden
+ }
+ .hover-menu:hover .hover-dropdown {
+    @apply block
+ }
+
+ @media screen and (max-width: 767px) {
+   .xsMenu-menu > .overlay {
+      @apply hidden
+   }
+    .xsMenu-menu > div {
+      @apply -right-60 transition-all duration-300 ease-out
+    }
+     input#xsMenu:checked ~ .xsMenu-menu > div {
+        @apply -right-0 z-20
+     }
+     input#xsMenu:checked ~ .xsMenu-menu > .overlay{
+      @apply block
+   }
+
+ }
+
+ .footerLink {
+   @apply text-yellow-400 whitespace-nowrap hover:text-white  transition duration-300;
+}
+
+.centerAll {
+   @apply flex justify-center items-center;
+}
