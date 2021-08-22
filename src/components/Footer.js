@@ -17,7 +17,7 @@ const Footer = () => (
                             <li><Link className="footerLink" to="/">Home</Link></li>
                             <li><Link className="footerLink" to="/philomena">About St Philomena</Link></li>
                             <li><Link className="footerLink" to="/shop">Shop Devotional Items</Link></li>
-                            <li><Link className="footerLink" to="/about">About the Shrine></Link></li>
+                            <li><Link className="footerLink" to="/about">About the Shrine</Link></li>
                             <li><Link className="footerLink" to="/schedule">Schedule a Visit</Link></li>
                         </ul>
                     </div>
