@@ -12,6 +12,7 @@ const Home = () => (
     
     <Seo title="The National Shrine of Saint Philomena" />
     <HomeHeader/>
+    Hi greg!
     <Menu/>
     <HomeContent/>
  
