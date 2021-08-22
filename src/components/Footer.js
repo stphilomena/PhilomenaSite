@@ -7,7 +7,7 @@ const Footer = () => (
         <div className="flex justify-center bg-red-700 text-yellow-400 py-10">
             <div className="bg-red-700 grid grid-cols-1 sm:grid-cols-3 max-w-11/12">
                 <div className="flex items-center justify-center">
-                    <StaticImage className="h-20" src="../images/saint_philomena_shrine_logo.png" formats={["auto"]}
+                    <StaticImage className="h-auto w-2/3" src="../images/saint_philomena_shrine_logo.png" formats={["auto"]}
                                  alt="National Shrine of Saint Philomena"/>
                 </div>
                 <div>
