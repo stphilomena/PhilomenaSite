@@ -8,7 +8,7 @@ const Menu = () => (
     <li className="menuLink"><Link to="/shop">Shop</Link></li>
     <li className="menuLink"><Link to="/about">About Us</Link></li>
     <li className="menuLink"><Link to="/contact">Contact Us</Link></li>
-    <li className="menuLink"><a href="https://www.pLinkypal.com/us/fundraiser/charity/1718855">Donate</a></li>
+    <li className="menuLink"><a href="https://www.paypal.com/donate/?hosted_button_id=MC3W3XP9HZ49N">Donate</a></li>
 </ul>      
 </div>
 )
