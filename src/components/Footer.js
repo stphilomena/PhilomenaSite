@@ -12,7 +12,7 @@ const Footer = () => (
                 </div>
                 <div>
                     <div>
-                        <h2 class="font-bold text-white">QUICK LINKS</h2>
+                        <h2 className="font-bold text-white">QUICK LINKS</h2>
                         <ul>
                             <li><Link className="footerLink" to="/">Home</Link></li>
                             <li><Link className="footerLink" to="/philomena">About St Philomena</Link></li>

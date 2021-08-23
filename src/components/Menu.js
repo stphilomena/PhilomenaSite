@@ -3,7 +3,7 @@ import {Link} from "gatsby";
 
 const Menu = () => (
 <div className="bg-gray-200">
-  <ul className="centerAll text-base lg:text-2xl px-2">
+  <ul className="centerAll text-sm lg:text-2xl px-2">
     <li className="menuLink"><Link to="/philomena">St Philomena</Link></li>
     <li className="menuLink"><Link to="/shop">Shop</Link></li>
     <li className="menuLink"><Link to="/about">About Us</Link></li>
