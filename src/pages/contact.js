@@ -11,8 +11,8 @@ const Contact = () => (
   <Layout>
     
     <Seo title="The National Shrine of Saint Philomena" />
-    <Menu/>
     <ContactHeader/>
+    <Menu/>
     <ContactContent/>
  
   </Layout>

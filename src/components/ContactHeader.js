@@ -1,10 +1,9 @@
 import * as React from "react"
 
 
-
 const ContactHeader = () => (
 
-    <div>
+    <div className="w-screen h-1/5">
 GOOGLE MAPS
     </div>
 
