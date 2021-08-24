@@ -5,7 +5,7 @@ import {Link} from "gatsby";
 const HomeContent = () => (
  
 <div>
-<div>
+<div className="hover:filter hover:grayscale">
 <section id="philomena">
     <div className="bg-gradient-to-tl from-yellow-800 via-yellow-500 to-yellow-200 centerAll">
         <div className="max-w-3/4">

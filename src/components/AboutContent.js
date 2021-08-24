@@ -1,5 +1,5 @@
 import * as React from "react"
-import ShrineImg from '../images/shrine.jpeg';
+import {StaticImage} from "gatsby-plugin-image"
 
 
 const AboutContent = () => (
@@ -7,10 +7,10 @@ const AboutContent = () => (
 <div>
     <section id="about">
 
-    <div className="flex justify-center items center">
+    <div className="centerAll">
         <div className="w-3/4 ">
             <div className="p-10 centerAll">
-                <img src={ShrineImg} alt="National Shrine of Saint Philomena" />
+                <StaticImage className="lg:w-1/2" src="../images/shrine_of_st_philomena.jpg" alt="National Shrine of Saint Philomena" />
             </div>
             <div>
                 “The name of the new church will be ‘Our Lady of Victory Church, and the National Shrine of St. Philomena,’” said Fr. Marc Vernoy, the prior of St. Thomas More Church in Sanford, FL. The eight priests of that priory service all the SSPX chapels in Florida.
