@@ -19,7 +19,7 @@ const HomeContent = () => (
         <div>
         <h1 className="text-white font-black text-5xl">ABOUT SAINT PHILOMENA</h1>
         <br/>
-        <p className="text-white">On May 24th, 1802, cleaning and clearing work was in progress in the most ancient of all the catacombs in Rome, the St. Priscilla catacombs, which dated almost from apostolic times. One of the workers, while digging in one of the ancient tunnels, by accident found a shelf-tomb that had never been opened. (Most of the graves in this cemetery had been opened, and their relics removed for safety.) The tomb was clearly the tomb of a martyr, with rough inscriptions including arrows, a lance, an anchor, a lily or flame, and the words: PAX TECUM FILUMENA</p><br/>
+        <p className="md:w-3/4 text-white">On May 24th, 1802, cleaning and clearing work was in progress in the most ancient of all the catacombs in Rome, the St. Priscilla catacombs, which dated almost from apostolic times. One of the workers, while digging in one of the ancient tunnels, by accident found a shelf-tomb that had never been opened. (Most of the graves in this cemetery had been opened, and their relics removed for safety.) The tomb was clearly the tomb of a martyr, with rough inscriptions including arrows, a lance, an anchor, a lily or flame, and the words: PAX TECUM FILUMENA</p><br/>
           
         <Link to="/philomena"><button className="shadow-lg py-5 px-7 font-bold text-lg transform scale-100 rounded-full bg-yellow-500 md:bg-red-700 text-white hover:scale-105">LEARN MORE</button></Link>
         </div>
@@ -106,24 +106,26 @@ const HomeContent = () => (
 <div>
 <section id="about">
 
-<div className="bg-white centerAll">
+<div className="bg-gradient-to-tl from-blue-500 via-blue-300 to-white centerAll">
  <div className="max-w-3/4">
    <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
-    <div className="pt-20">
-     <div className="centerAll">
-     <StaticImage src="../images/our_lady_of_victory_chapel.png" alt="Our Ladi of Victory in Davie Florida" />
+    <div className="pt-10">
+     <div className="centerAll w-full">
+     <StaticImage className="centerAll w-2/3" src="../images/Our_lady_of_victory_crop.png" alt="Our Lady of Victory in Davie Florida" />
      </div>
     </div>
     
     <div className="w-full p-5 centerAll bg-white md:bg-transparent">
         <div className="w-full">
-             <h1 className="text-red-700 font-black text-5xl">ABOUT US</h1>
-            <p className="text-green-800">The national shrine of St. Philomena in south Florida is operated by the Society of St. Pius X. Owing to the difficulties caused in the past year by the Coronavirus, the shrine was moved 25 miles north from its Little Havana home in Miami north to Our Lady of Victory in Davie, FL. The last Mass for the shrine at the Miami location was March 22nd, 2020.</p>
-            <p>“The catalyst for the merging of the two chapels was Covid-19,” said Fr. Samuel Fabula, the pastor of Our Lady of Victory. “The shutdowns and restrictions for Miami in Dade County were more restrictive than those for Davie in Broward County. When the faithful of St. Philomena were denied access to the church, the decision was made to combine the two parishes at Our Lady of Victory, which is also the larger chapel.”</p>
-              <Link to="/about"><button className="bg-red-600 hover:bg-red-800 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
+             <h1 className="text-blue-700 font-black text-5xl">ABOUT US</h1>
+             <div className="md:w-3/4">
+            <p><br />The national shrine of St. Philomena in south Florida is operated by the Society of St. Pius X. Owing to the difficulties caused in the past year by the Coronavirus, the shrine was moved 25 miles north from its Little Havana home in Miami north to Our Lady of Victory in Davie, FL. The last Mass for the shrine at the Miami location was March 22nd, 2020. <br /><br />
+            “The catalyst for the merging of the two chapels was Covid-19,” said Fr. Samuel Fabula, the pastor of Our Lady of Victory. “The shutdowns and restrictions for Miami in Dade County were more restrictive than those for Davie in Broward County. When the faithful of St. Philomena were denied access to the church, the decision was made to combine the two parishes at Our Lady of Victory, which is also the larger chapel.”</p><br /><br />
+              <Link to="/about"><button className="bg-blue-600 hover:bg-blue-800 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
                    CONTINUE READING
                   </button>
               </Link>
+              </div>
         </div>
         </div>
         </div>
@@ -136,20 +138,20 @@ const HomeContent = () => (
 
 <div>
 <section id="contact">
-<div className="bg-gradient-to-tl from-blue-700 via-blue-300 to-white centerAll">
+<div className="bg-gradient-to-l from-gray-300 to-white centerAll">
     <div className="max-w-3/4">
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
-            <div className="pt-20">
+            <div className="py-10">
                 <div className="centerAll">
-                <StaticImage className="relative w-3/4 mb-0" src="../images/Our_lady_of_victory_crop.png" alt="Our Lady of Victory" />
+                <StaticImage className="relative w-3/4 mb-0" src="../images/St-Philomena-Relic.png" alt="Blessed Relic of Saint Philomena at the National Shrine" />
                 </div>
             </div>
         
           
-                    <div className="w-full p-5 centerAll bg-blue-900 md:bg-transparent">
+                    <div className="w-full p-5 centerAll bg-gray-200 md:bg-transparent">
                         <div>
-                             <h1 className="text-white font-black text-5xl">SCHEDULE A VISIT</h1>
-                        <p className="text-white">Planning a visit or pilgrimage to the Shrine? Tell us about it!</p>
+                             <h1 className="text-gray-600 font-black text-5xl">SCHEDULE A VISIT</h1>
+                        <p className="text-gray-600"><br />Planning a visit or pilgrimage to the Shrine? Tell us about it!</p><br />
                             <div>
                                   <form id="appointment" action="#" method="">
                                                     <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
@@ -182,7 +184,7 @@ const HomeContent = () => (
                                                         </div>
                             
                                                         <div className="col-span-2 text-center">
-                                                        <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
+                                                        <button className="bg-gray-500 hover:bg-gray-600 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
                                                         SUBMIT
                                                         </button>   
                                                         </div>
