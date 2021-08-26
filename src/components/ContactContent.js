@@ -6,20 +6,20 @@ const ContactContent = () => (
     <div>
 <div>
 <section id="contact">
-<div className="bg-gradient-to-tl from-blue-700 via-blue-300 to-white centerAll">
+<div className="bg-gradient-to-l from-gray-300 to-white centerAll">
     <div className="max-w-3/4">
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
             <div className="pt-20">
                 <div className="centerAll">
-                <StaticImage className="relative w-3/4 mb-0" src="../images/Our_lady_of_victory_crop.png" alt="Our Lady of Victory" />
+                <StaticImage className="relative w-4/5 mb-0" src="../images/St-Philomena-Relic.png" alt="Blessed Relic of Saint Philomena at the National Shrine" />
                 </div>
             </div>
         
           
                     <div className="w-full p-5 centerAll bg-blue-900 md:bg-transparent">
-                        <div>
-                             <h1 className="text-white font-black text-5xl">SCHEDULE A VISIT</h1>
-                        <p className="text-white">Planning a visit or pilgrimage to the Shrine? Tell us about it!</p>
+                    <div>
+                             <h1 className="text-gray-600 font-black text-5xl">SCHEDULE A VISIT</h1>
+                        <p className="text-gray-600"><br />Planning a visit or pilgrimage to the Shrine? Tell us about it!</p><br />
                             <div>
                                   <form id="appointment" action="#" method="">
                                                     <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
@@ -52,7 +52,7 @@ const ContactContent = () => (
                                                         </div>
                             
                                                         <div className="col-span-2 text-center">
-                                                        <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
+                                                        <button className="bg-gray-500 hover:bg-gray-600 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
                                                         SUBMIT
                                                         </button>   
                                                         </div>

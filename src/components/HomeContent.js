@@ -110,7 +110,7 @@ const HomeContent = () => (
  <div className="max-w-3/4">
    <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
     <div className="pt-10">
-     <div className="centerAll w-full">
+     <div className="centerAll w-11/12">
      <StaticImage className="centerAll w-2/3" src="../images/Our_lady_of_victory_crop.png" alt="Our Lady of Victory in Davie Florida" />
      </div>
     </div>
@@ -143,7 +143,7 @@ const HomeContent = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
             <div className="py-10">
                 <div className="centerAll">
-                <StaticImage className="relative w-3/4 mb-0" src="../images/St-Philomena-Relic.png" alt="Blessed Relic of Saint Philomena at the National Shrine" />
+                <StaticImage className="relative w-4/5 mb-0" src="../images/St-Philomena-Relic.png" alt="Blessed Relic of Saint Philomena at the National Shrine" />
                 </div>
             </div>
         
