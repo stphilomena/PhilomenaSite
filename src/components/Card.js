@@ -1,22 +1,28 @@
 import * as React from "react"
+import {USD_P2} from "../helpers/NumberHelper";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const Card = () => (
+const Card = ({item}) => (
 
     <div className="bg-white w-60 relative group">
 
         <section className="bg-white h-60 centerAll">
-            <button className="centerAll h-60 w-60 bg-gray-500 border-white border-b-4 group-hover:border-red-600">a</button>
+            <button className="centerAll h-60 w-60 bg-gray-500 border-white border-b-4 group-hover:border-red-600">
+                <GatsbyImage alt={item.title} image={getImage(item.image)}/>
+            </button>
         </section>
        
         <section className="grid grid-rows-3">
             <div className="centerAll font-light text-lg w-full">
-                <h4>Title</h4>
+                <h4>{item.title}</h4>
             </div>
             <div className="text-gray-500 centerAll ">
-                Size Option
+                {item.option1Name}
             </div>
             <div>
-                <p className="text-red-500 font-bold text-2xl py-2">PRICE:</p>
+                <p className="text-red-500 font-bold text-2xl py-2">PRICE:
+                    {USD_P2(item.option1Price)}
+                </p>
             </div>
         </section>
         
