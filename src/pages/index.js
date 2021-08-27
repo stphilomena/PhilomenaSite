@@ -5,17 +5,31 @@ import Menu from "../components/Menu"
 import Layout from "../components/Layout"
 import HomeHeader from "../components/HomeHeader"
 import HomeContent from "../components/HomeContent"
+// import {StaticQuery, graphql} from "gatsby";
 
+const Home = () => {
+//     `
+//     query MyQuery {
+//   allGoogleReview(sort: {order: DESC, fields: id}) {
+//     nodes {
+//       date
+//       body
+//       source_image
+//     }
+//   }
+// }
+//     `
+   return (
 
-const Home = () => (
-  <Layout>
-    
-    <Seo title="The National Shrine of Saint Philomena" />
-    <HomeHeader/>
-    <Menu/>
-    <HomeContent/>
- 
-  </Layout>
-)
+        <Layout>
+
+            <Seo title="The National Shrine of Saint Philomena" />
+            <HomeHeader/>
+            <Menu/>
+            <HomeContent/>
+
+        </Layout>
+    )
+}
 
 export default Home
