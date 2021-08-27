@@ -53,13 +53,14 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store
                         let fileInfo = folderResponse.files.find(f => f.name === node.picture);
                         if (fileInfo) {
                             let file = await googleDriveInstance.getFile(fileInfo);
+                            console.log('Created picture', file)
                             // const dest = 'src/images/drive/' + node.picture;
                             // console.log('Copy', file, dest);
                             // fs.copyFileSync(file, dest);
                             // node.picture = dest;
                             node.picture = file;
-                        }
-                    }
+                        } else node.picture = null;
+                    } else node.picture = null;
                     createNode({
                         ...node,
                         id: createNodeId(`${typePrefix} ${spreadsheetName} ${sheetTitle} ${i}`),
