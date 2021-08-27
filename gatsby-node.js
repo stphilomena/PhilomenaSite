@@ -81,6 +81,8 @@ exports.onCreateNode = async ({node, actions, store, getCache, createNodeId}) =>
     if (node.internal.type === 'GoogleSpreadsheetInventoryInventory') {
         const { createNode } = actions;
         if(!node.picture) return;
+
+        console.log('Converting picture', node.picture)
         const buffer = fs.readFileSync(node.picture);
         const fileNode = await createFileNodeFromBuffer({
             buffer, // string that points to the URL of the image
