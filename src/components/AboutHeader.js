@@ -1,12 +1,12 @@
 import * as React from "react"
-import ShrineHeaderImg from '../images/our_lady_of_victory_chapel.png';
+import {StaticImage} from "gatsby-plugin-image"
 
 
 const AboutHeader = () => (
    
-<div className="flex justify-left items-center bg-gradient-to-tl from-green-400 to-transparent">
-<img className="w-1/3" src={ShrineHeaderImg} alt="The National Shrine of Saint Philomena" />
-    <div className="font-black text-white text-4xl lg:text-8xl">
+<div className="centerAll bg-gradient-to-tl from-blue-500 via-blue-300 to-white pt-5 md:pt-10">
+<StaticImage className="w-1/2 md:w-1/5" src="../images/Our_lady_of_victory_crop.png" alt="Our Lady of Victory in Davie Florida" />
+    <div className="font-black text-white text-4xl sm:text-5xl lg:text-8xl">
     <div>ABOUT THE SHRINE</div>
   </div>
 </div>
