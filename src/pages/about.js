@@ -5,6 +5,7 @@ import Menu from "../components/Menu"
 import Layout from "../components/Layout"
 import AboutHeader from "../components/AboutHeader"
 import AboutContent from "../components/AboutContent"
+import AboutAccordion from "../components/AboutAccordion"
 
 
 const About = () => (
@@ -14,6 +15,7 @@ const About = () => (
     <AboutHeader/>
     <Menu/>
     <AboutContent/>
+    <AboutAccordion/>
  
   </Layout>
 )

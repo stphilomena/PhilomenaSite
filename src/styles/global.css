@@ -44,3 +44,11 @@
 .centerAll {
    @apply flex justify-center items-center;
 }
+
+.content { 
+   @apply hidden; 
+}
+
+.content.is-expanded {
+   @apply block; 
+}

@@ -45,7 +45,7 @@ const Shop = () => {
             <HomeHeader/>
             <Menu/>
             <div className="centerAll py-10">
-                <div className="grid grid-cols-4 w-5/6 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-5/6 gap-5 p-5">
                     {items.map(item => {
                         return (
                             <div className="centerAll pt-20"><Card item={item}/></div>
