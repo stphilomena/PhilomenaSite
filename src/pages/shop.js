@@ -41,6 +41,7 @@ const Shop = () => {
 
     return (
         <Layout>
+            HELLO
             <Seo title="Schedule the Visit | National Shrine of Saint Philomena"/>
             <HomeHeader/>
             <Menu/>
