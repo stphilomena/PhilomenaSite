@@ -595,3 +595,6 @@ pre tt:after {
     font-size: 100%;
   }
 }
+brightRed {
+  background-color: #ff0000;
+}

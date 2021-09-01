@@ -7,20 +7,20 @@ const Card = ({item}) => (
     <div className="bg-white w-60 relative group">
 
         <section className="bg-white h-60 centerAll">
-            <button className="centerAll h-60 w-60 bg-gray-500 border-white border-b-4 group-hover:border-red-600">
+            <button className="centerAll h-60 w-60 bg-gray-400 transform translate-y-0 transition duration-500 hover:-translate-y-3 border-white border-b-4 group-hover:border-red-600">
                 <GatsbyImage alt={item.title} image={getImage(item.image)}/>
             </button>
         </section>
        
         <section className="grid grid-rows-3">
-            <div className="centerAll font-light text-lg w-full">
+            <div className="centerAll font-light text-sm font-bold w-full">
                 <h4>{item.title}</h4>
             </div>
             <div className="text-gray-500 centerAll ">
                 {item.option1Name}
             </div>
             <div>
-                <p className="text-red-500 font-bold text-2xl py-2">PRICE:
+                <p className="text-red-500 font-bold text-xl py-2">PRICE: &nbsp;
                     {USD_P2(item.option1Price)}
                 </p>
             </div>
