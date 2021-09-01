@@ -14,7 +14,7 @@ const SideCart = () => (
         </div>
         
         <div className="centerAll py-10">
-            CONTENT
+        <CartContent/>
         </div>
        
         <div className="centerAll w-full py-5 font-bold">
