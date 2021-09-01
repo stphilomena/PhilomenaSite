@@ -1,7 +1,7 @@
 import * as React from "react"
 import {useState} from "react";
 
-const Accordion = ({children, title}) => {
+const AboutAccordion = ({children, title}) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -61,3 +61,5 @@ The faithful of the shrine of St. Philomena express their gratitude to the SSPX 
       </>
   )
 }
+
+export default AboutAccordion
