@@ -17,7 +17,7 @@ const InputField = ({placeholder, type, className, value, setter, name, required
         <input type={type||"text"} className={"w-full"} onChange={onChange} onBlur={onBlur} name={name} placeholder={placeholder} value={value} />
         </div>
     )
-}
+};
 
 const CartPageContent = () => {
     const [cartState, setCartState] = useState({
