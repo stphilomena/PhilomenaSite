@@ -13,7 +13,7 @@ const InputField = ({placeholder, type, className, value, setter, name, required
     }
     return (<div className={className}>
             {!pristine && required && (value||"").length === 0 ?
-                <div className={"relative"}> <span className={"absolute right-0 formAlert"}>{placeholder} is required.</span></div>:""}
+                <div className={"relative"}> <span className={"text-bold text-red-500 "}>*</span></div>:""}
         <input type={type||"text"} className={"w-full"} onChange={onChange} onBlur={onBlur} name={name} placeholder={placeholder} value={value} />
         </div>
     )

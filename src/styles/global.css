@@ -56,7 +56,3 @@
 .inputField{
    @apply border border-gray-300 rounded-md p-2 centerAll;
 }
-
-.formAlert{
-   @apply text-red-500;
-}
