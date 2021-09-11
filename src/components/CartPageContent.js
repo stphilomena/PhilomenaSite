@@ -13,7 +13,7 @@ const InputField = ({placeholder, type, className, value, setter, name, required
     }
     return (<div className={className}>
             {!pristine && required && (value||"").length === 0 ?
-                <div className={"relative"}> <span className={"absolute right-0 bg-red-800 text-white px-4 bold"}>{placeholder} is required.</span></div>:""}
+                <div className={"relative"}> <span className={"absolute right-0 formAlert"}>{placeholder} is required.</span></div>:""}
         <input type={type||"text"} className={"w-full"} onChange={onChange} onBlur={onBlur} name={name} placeholder={placeholder} value={value} />
         </div>
     )
@@ -121,12 +121,12 @@ const CartPageContent = () => {
 
                             <div className="centerAll p-2">
                                 <div className="grid grid-cols-4 w-full gap-2">
-                                    <InputField name={"login"} value={cartState.login} placeholder={"USERNAME"}
+                                    <InputField name={"login"} value={cartState.login} placeholder={"Paypal Login"}
                                                 setter={setter}
-                                                className="col-span-4 border border-gray-400" />
-                                    <InputField name={"password"} value={cartState.password} placeholder={"PASSWORD"}
+                                                className="col-span-4 inputField" />
+                                    <InputField name={"password"} value={cartState.password} placeholder={"Paypal Password"}
                                                 setter={setter} type={"password"}
-                                                className="col-span-4 border border-gray-400" />
+                                                className="col-span-4 inputField" />
                                     <div className="py-2 col-span-4 centerAll">
                                         <button
                                             className=" w-72 bg-blue-700 hover:bg-blue-900 text-white p-5 font-bold rounded-full">
@@ -148,43 +148,43 @@ const CartPageContent = () => {
 
                                     <InputField name={"firstName"} value={cartState.firstName} setter={setter}
                                                 placeholder={"First Name"} required={true}
-                                                className="col-span-4 md:col-span-2 border border-gray-400"/>
+                                                className="inputField col-span-4 md:col-span-2"/>
                                     <InputField name={"lastName"} value={cartState.lastName} setter={setter}
                                                 placeholder={"Last Name"} required={true}
-                                                className="col-span-4 md:col-span-2 border border-gray-400" />
+                                                className="col-span-4 md:col-span-2 inputField" />
                                     <InputField name={"email"} value={cartState.email} placeholder={"E-Mail"}
                                                 setter={setter} required={true} type={"email"}
-                                                className="col-span-4 md:col-span-2 border border-gray-400" />
+                                                className="col-span-4 md:col-span-2 inputField" />
                                     <InputField name={"phone"} value={cartState.phone} setter={setter}
                                                 placeholder={"Telephone"} required={true}
-                                                className="col-span-4 md:col-span-2 border border-gray-400" />
+                                                className="col-span-4 md:col-span-2 inputField" />
                                     <InputField name={"address1"} value={cartState.address1} setter={setter}
                                                 placeholder={"Address 1"} required={true}
-                                                className="col-span-4 border border-gray-400" />
+                                                className="col-span-4 inputField" />
                                     <InputField name={"address2"}  value={cartState.address2} setter={setter}
                                         placeholder={"Address 2"} required={false}
-                                        className="col-span-4 border border-gray-400" />
+                                        className="col-span-4 inputField" />
                                     <InputField name={"city"} value={cartState.city} setter={setter}
                                                 placeholder={"City"}  required={true}
-                                                className="col-span-4 md:col-span-2 border border-gray-400" />
+                                                className="col-span-4 md:col-span-2 inputField" />
                                     <InputField name={"state"} value={cartState.state} setter={setter}
                                                 placeholder={"State"} required={true}
-                                                className="col-span-2 md:col-span-1 border border-gray-400" />
+                                                className="col-span-2 md:col-span-1 inputField" />
                                     <InputField name={"zip"} value={cartState.zip} setter={setter}
                                                 placeholder={"Zip"} required={true}
-                                                className="col-span-2 md:col-span-1 border border-gray-400" />
+                                                className="col-span-2 md:col-span-1 inputField" />
                                     <div className="col-span-4 centerAll font-bold">
                                         CREDIT CARD INFORMATION
                                     </div>
                                     <InputField name={"cc"} value={cartState.cc} placeholder={"Credit Card Number"}
                                                 setter={setter}
-                                                className="col-span-4 border border-gray-400" />
+                                                className="col-span-4 inputField" />
                                     <InputField name={"exp"} value={cartState.exp} placeholder={"Expiration"}
                                                 setter={setter}
-                                                className="col-span-2 md:col-span-1 border border-gray-400" />
+                                                className="col-span-2 md:col-span-1 inputField" />
                                     <InputField name={"svc"} value={cartState.svc} placeholder={"SVC"}
                                                 setter={setter}
-                                                className="col-span-2 md:col-span-1 border border-gray-400" />
+                                                className="col-span-2 md:col-span-1 inputField" />
                                 </div>
                             </div>
                         </div>
