@@ -44,7 +44,7 @@ const CartPageContent = () => {
     return (
         <form>
             <div className="w-full centerAll">
-                <div className="w-8/12 grid grid-cols-1">
+                <div className="w-10/12 grid grid-cols-1">
                     <div className="w-full text-black ">
                         <div className="text-red-500 font-black text-4xl centerAll py-10">SHOPPING CART</div>
 
@@ -119,31 +119,15 @@ const CartPageContent = () => {
                     <div className="">
                         <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-5">
 
-                            <div className="centerAll p-2">
-                                <div className="grid grid-cols-4 w-full gap-2">
-                                    <InputField name={"login"} value={cartState.login} placeholder={"Paypal Login"}
-                                                setter={setter}
-                                                className="col-span-4 inputField" />
-                                    <InputField name={"password"} value={cartState.password} placeholder={"Paypal Password"}
-                                                setter={setter} type={"password"}
-                                                className="col-span-4 inputField" />
-                                    <div className="py-2 col-span-4 centerAll">
-                                        <button
-                                            className=" w-72 bg-blue-700 hover:bg-blue-900 text-white p-5 font-bold rounded-full">
-                                            PAY WITH PAYPAL
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
                             <div>
-                                <div className="grid grid-cols-4 w-full gap-2">
+                            <div className="grid grid-cols-4 w-full gap-2">
                                     <div className="col-span-4 centerAll font-bold">
-                                        BILLING INFORMATION
+                                        SHIPPING INFORMATION
 
                                     </div>
 
-                                    <div className="col-span-4 ">
-                                        Ship to this address
+                                    <div className="col-span-4">
+                                    &#9745; Copy address to billing information
                                     </div>
 
                                     <InputField name={"firstName"} value={cartState.firstName} setter={setter}
@@ -185,8 +169,75 @@ const CartPageContent = () => {
                                     <InputField name={"svc"} value={cartState.svc} placeholder={"SVC"}
                                                 setter={setter}
                                                 className="col-span-2 md:col-span-1 inputField" />
-                                </div>
+                                </div> 
                             </div>
+
+                            <div>
+                            <div className="grid grid-cols-4 w-full gap-2">
+                                    <div className="col-span-4 centerAll font-bold">
+                                        BILLING INFORMATION
+
+                                    </div>
+
+                                    <div className="col-span-4">
+                                    &#9745; Ship to the same address
+                                    </div>
+
+                                    <InputField name={"firstName"} value={cartState.firstName} setter={setter}
+                                                placeholder={"First Name"} required={true}
+                                                className="inputField col-span-4 md:col-span-2"/>
+                                    <InputField name={"lastName"} value={cartState.lastName} setter={setter}
+                                                placeholder={"Last Name"} required={true}
+                                                className="col-span-4 md:col-span-2 inputField" />
+                                    <InputField name={"email"} value={cartState.email} placeholder={"E-Mail"}
+                                                setter={setter} required={true} type={"email"}
+                                                className="col-span-4 md:col-span-2 inputField" />
+                                    <InputField name={"phone"} value={cartState.phone} setter={setter}
+                                                placeholder={"Telephone"} required={true}
+                                                className="col-span-4 md:col-span-2 inputField" />
+                                    <InputField name={"address1"} value={cartState.address1} setter={setter}
+                                                placeholder={"Address 1"} required={true}
+                                                className="col-span-4 inputField" />
+                                    <InputField name={"address2"}  value={cartState.address2} setter={setter}
+                                        placeholder={"Address 2"} required={false}
+                                        className="col-span-4 inputField" />
+                                    <InputField name={"city"} value={cartState.city} setter={setter}
+                                                placeholder={"City"}  required={true}
+                                                className="col-span-4 md:col-span-2 inputField" />
+                                    <InputField name={"state"} value={cartState.state} setter={setter}
+                                                placeholder={"State"} required={true}
+                                                className="col-span-2 md:col-span-1 inputField" />
+                                    <InputField name={"zip"} value={cartState.zip} setter={setter}
+                                                placeholder={"Zip"} required={true}
+                                                className="col-span-2 md:col-span-1 inputField" />
+                                    
+                                    
+                                        <div className="col-span-4 centerAll font-bold">
+                                        PAY USING PAYPAL ACCOUNT
+                                    </div>
+                                    <div className="col-span-4 md:col-span-2 w-full">
+                                            <InputField name={"login"} value={cartState.login} placeholder={"Paypal Login"}
+                                                        setter={setter}
+                                                        className="col-span-4 md:col-span-2 inputField mb-2" />
+                                            <InputField name={"password"} value={cartState.password} placeholder={"Paypal Password"}
+                                                        setter={setter} type={"password"}
+                                                        className="col-span-4 md:col-span-2 inputField" />
+                                        </div>
+                                        
+                                            <div className="py-2 col-span-4  md:col-span-2 centerAll p-2">
+                                                <button
+                                                    className=" w-72 bg-blue-700 hover:bg-blue-900 text-white p-5 font-bold rounded-full">
+                                                    PAY WITH PAYPAL
+                                                </button>
+                                            </div>
+
+
+                                    
+                                </div> 
+                            </div>
+                            
+                        
+                            
                         </div>
                     </div>
                 </div>
