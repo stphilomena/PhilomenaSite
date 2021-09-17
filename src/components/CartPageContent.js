@@ -101,11 +101,11 @@ const CartPageContent = () => {
         </div>
     </div>
     <div className="py-5">
-    <Link to="#checkout">
+    <a href="#checkout">
         <button className="bg-red-500 hover:bg-red-700 text-white p-5 w-full font-bold rounded-full">
                 PLACE ORDER
         </button>
-        </Link>
+    </a>
    
     </div>
     </div>
