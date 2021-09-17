@@ -43,12 +43,11 @@ const CartPageContent = () => {
     };
     return (
         <form>
-            <div className="w-full centerAll">
-                <div className="w-10/12 grid grid-cols-1">
-                    <div className="w-full text-black ">
-                        <div className="text-red-500 font-black text-4xl centerAll py-10">SHOPPING CART</div>
-
-                        <div className="hidden md:grid md:grid-cols-12 gap-5 pb-5">
+<div className="text-red-500 font-black text-4xl centerAll py-10">SHOPPING CART</div>
+<div className="w-full centerAll">
+    
+    <div className=" w-10/12">
+    <div className="hidden md:grid md:grid-cols-12 gap-5 pb-5">
                             <div className="md:col-span-4 lg:col-span-2 centerAll font-bold">IMAGE</div>
                             <div className="md:col-span-2 lg:col-span-1 centerAll font-bold">PRICE</div>
                             <div className="md:col-span-2 lg:col-span-1 centerAll font-bold">QTY</div>
@@ -79,49 +78,50 @@ const CartPageContent = () => {
                                 </div>
                             </div>
                         </div>
+    </div>
+</div>
 
-                        <div className="w-80">
-                            <div className="grid grid-cols-2 gap-5 pt-5">
-                                <div className="col-span-1 text-right">
-                                    <div>Subtotal:</div>
-                                    <div>Taxes:</div>
-                                    <div>Shipping:</div>
-                                    <div>Order Total:</div>
-                                </div>
-                                <div className="col-span-1 text-left font-bold">
-                                    <div>Subtotal</div>
-                                    <div>Taxes</div>
-                                    <div>Shipping</div>
-                                    <div>Order Total</div>
-
-                                </div>
-
-                                <div>
-                                    <div className="py-2">
-                                        <button
-                                            className="bg-red-500 hover:bg-red-700 text-white p-5 w-96 font-bold rounded-full">
-                                            PLACE ORDER
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className="text-red-500 font-black text-4xl centerAll pt-20">CHECK OUT</div>
-
-                    </div>
+<div className="centerAll">
+    <div className="w-10/12 py-5">
+    <div className=" w-max">
+    <div className="grid grid-cols-2 gap-2 px-10">
+                <div className="col-span-1 text-right">
+                    <div>Subtotal:</div>
+                    <div>Taxes:</div>
+                    <div>Shipping:</div>
+                    <div>Order Total:</div>
+                </div>
+        <div>
+        <div className="col-span-1 text-left font-bold ">
+                <div>Subtotal</div>
+                <div>Taxes</div>
+                <div>Shipping</div>
+                <div>Order Total</div>
+            </div>
+        </div>
+    </div>
+    <div className="py-5">
+    <a href="#checkout">
+        <button className="bg-red-500 hover:bg-red-700 text-white p-5 w-full font-bold rounded-full">
+                PLACE ORDER
+        </button>
+    </a>
+    </div>
+    </div>
+    </div>   
+</div>
 
 
-                    <div className="">
-                        <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-5">
 
-                            <div>
+<div id="checkout" className="text-red-500 font-black text-4xl centerAll py-10">CHECK OUT</div>
+
+<div className="centerAll">
+
+<div className="grid grid-cols-1 gap-2 lg:grid-cols-2 w-10/12">
+                   
+        <div>
                             <div className="grid grid-cols-4 w-full gap-2">
-                                    <div className="col-span-4 centerAll font-bold">
+                                    <div className="col-span-4 centerAll font-bold py-5">
                                         SHIPPING INFORMATION
 
                                     </div>
@@ -157,24 +157,14 @@ const CartPageContent = () => {
                                     <InputField name={"zip"} value={cartState.zip} setter={setter}
                                                 placeholder={"Zip"} required={true}
                                                 className="col-span-2 md:col-span-1 inputField" />
-                                    <div className="col-span-4 centerAll font-bold">
-                                        CREDIT CARD INFORMATION
-                                    </div>
-                                    <InputField name={"cc"} value={cartState.cc} placeholder={"Credit Card Number"}
-                                                setter={setter}
-                                                className="col-span-4 inputField" />
-                                    <InputField name={"exp"} value={cartState.exp} placeholder={"Expiration"}
-                                                setter={setter}
-                                                className="col-span-2 md:col-span-1 inputField" />
-                                    <InputField name={"svc"} value={cartState.svc} placeholder={"SVC"}
-                                                setter={setter}
-                                                className="col-span-2 md:col-span-1 inputField" />
+                                    
                                 </div> 
                             </div>
 
-                            <div>
-                            <div className="grid grid-cols-4 w-full gap-2">
-                                    <div className="col-span-4 centerAll font-bold">
+        
+        <div>
+        <div className="grid grid-cols-4 w-full gap-2">
+                                    <div className="col-span-4 centerAll font-bold py-5">
                                         BILLING INFORMATION
 
                                     </div>
@@ -210,39 +200,44 @@ const CartPageContent = () => {
                                     <InputField name={"zip"} value={cartState.zip} setter={setter}
                                                 placeholder={"Zip"} required={true}
                                                 className="col-span-2 md:col-span-1 inputField" />
-                                    
-                                    
-                                        <div className="col-span-4 centerAll font-bold">
-                                        PAY USING PAYPAL ACCOUNT
                                     </div>
-                                    <div className="col-span-4 md:col-span-2 w-full">
-                                            <InputField name={"login"} value={cartState.login} placeholder={"Paypal Login"}
-                                                        setter={setter}
-                                                        className="col-span-4 md:col-span-2 inputField mb-2" />
-                                            <InputField name={"password"} value={cartState.password} placeholder={"Paypal Password"}
-                                                        setter={setter} type={"password"}
-                                                        className="col-span-4 md:col-span-2 inputField" />
-                                        </div>
-                                        
-                                            <div className="py-2 col-span-4  md:col-span-2 centerAll p-2">
-                                                <button
-                                                    className=" w-72 bg-blue-700 hover:bg-blue-900 text-white p-5 font-bold rounded-full">
-                                                    PAY WITH PAYPAL
-                                                </button>
-                                            </div>
+        </div>
+    </div>
+</div>
 
+<div className="centerAll">
+<div className="grid grid-cols-1 gap-2 lg:grid-cols-2 w-10/12">
+        <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
+        <div className="col-span-4 centerAll font-bold py-5">
+        CREDIT CARD INFORMATION
+        </div>
+            <InputField name={"cc"} value={cartState.cc} placeholder={"Credit Card Number"}
+                        setter={setter}
+                        className="col-span-4 inputField" />
+            <InputField name={"exp"} value={cartState.exp} placeholder={"Expiration"}
+                        setter={setter}
+                        className="col-span-2 md:col-span-1 inputField" />
+            <InputField name={"svc"} value={cartState.svc} placeholder={"SVC"}
+                        setter={setter}
+                        className="col-span-2 md:col-span-1 inputField" />
+        </div>
+        <div>
+        <div className="col-span-4 centerAll font-bold py-5">
+         HAVE A PAYPAL ACCOUNT?
+         </div>
+         <div className="centerAll">
+            <button className=" w-72 bg-blue-700 hover:bg-blue-900 text-white p-5 font-bold rounded-full">
+            PAY WITH PAYPAL
+            </button>
+        </div>
+        </div>
+    </div>
+</div>
 
-                                    
-                                </div> 
-                            </div>
-                            
-                        
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+<div className="py-20">
+
+</div>
+</form>
     )
 }
 
