@@ -5,6 +5,8 @@ import Menu from "../components/Menu"
 import Layout from "../components/Layout"
 import HomeHeader from "../components/HomeHeader"
 import CartPageContent from "../components/CartPageContent"
+import SuccessfulCart from "../components/CartPageContentSuccessful"
+
 
 
 const CartPage = () => (
@@ -13,7 +15,7 @@ const CartPage = () => (
     <Seo title="The National Shrine of Saint Philomena" />
     <HomeHeader/>
     <Menu/>
-    <CartPageContent/>
+    <SuccessfulCart/>
  
   </Layout>
 )

@@ -127,9 +127,9 @@ const CartPageContent = () => {
 </div>
 
 <div className="py-10"> </div>
-
-<div id="checkout" className="border-t border-b border-gray-300 text-red-500 font-black text-4xl centerAll py-7">CHECK OUT</div>
-
+<div className="centerAll">
+<div id="checkout" className="w-10/12 border-t border-b border-gray-300 text-red-500 font-black text-4xl centerAll py-7">CHECK OUT</div>
+</div>
 <div className="centerAll">
 
 <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 w-10/12">
