@@ -43,9 +43,26 @@ const CartPageContent = () => {
     };
     return (
         <form>
+NEW CartPage
+
+<div className="bg-blue-300 centerAll">
+<div className="w-10/12 bg-gray-700">
+    <div className="grid grid-cols-2">
+        <div className="w-40 bg-red-200">
+            aa
+        </div>
+        <div className="w-max bg-yellow-200">
+            bb
+        </div>
+
+    </div>
+</div>
+</div>
+
 <div className="text-red-500 font-black text-4xl centerAll py-10">SHOPPING CART</div>
 <div className="w-full centerAll">
     
+
     <div className="w-10/12 border-b border-gray-300">
     <div className="hidden md:grid md:grid-cols-12 gap-5 pb-5">
             <div className="md:col-span-4 lg:col-span-2 centerAll font-bold">IMAGE</div>
