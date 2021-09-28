@@ -43,59 +43,56 @@ const CartPageContent = () => {
     };
     return (
         <form>
-NEW CartPage
-
-<div className="bg-blue-300 centerAll">
-<div className="w-10/12 bg-gray-700">
-    <div className="grid grid-cols-2">
-        <div className="w-40 bg-red-200">
-            aa
-        </div>
-        <div className="w-max bg-yellow-200">
-            bb
-        </div>
-
-    </div>
-</div>
-</div>
 
 <div className="text-red-500 font-black text-4xl centerAll py-10">SHOPPING CART</div>
-<div className="w-full centerAll">
-    
 
-    <div className="w-10/12 border-b border-gray-300">
-    <div className="hidden md:grid md:grid-cols-12 gap-5 pb-5">
-            <div className="md:col-span-4 lg:col-span-2 centerAll font-bold">IMAGE</div>
-            <div className="md:col-span-2 lg:col-span-1 centerAll font-bold">PRICE</div>
-            <div className="md:col-span-2 lg:col-span-1 centerAll font-bold">QTY</div>
-            <div className="md:col-span-4 lg:col-span-8 flex justify-start font-bold">PRODUCT DETAILS
+<div className="centerAll">
+<div className="px-5 md:px-0 md:w-10/12">
+    <div className="hidden sm:block border-b pb-2">
+        <div className="grid grid-cols-4">
+        <div></div>
+        <div className="col-span-2">
+        <div className="grid grid-cols-4">
+                <div className="col-span-4 sm:col-span-3 font-bold">PRODUCT</div>
+                <div className="col-span-4 sm:col-span-1 font-bold">PRICE</div>
             </div>
-    </div>
-
-    <div className="p-2">
-        <div className="grid grid-cols-12 gap-2 md:gap-5">
-            <div className="col-span-12 md:col-span-4 lg:col-span-2 centerAll">
-                IMAGE
             </div>
-
-            <div
-                className="col-span-2 md:col-span-2 lg:col-span-1 centerAll text-lg font-bold text-gray-600">
-                $5.00
-            </div>
-
-            <div className="col-span-2 md:col-span-2 lg:col-span-1 centerAll">
-                <div className="centerAll w-10 h-10 border border-black">1</div>
-            </div>
-
-
-            <div className="col-span-6 md:col-span-4 lg:col-span-8">
-                <div>Product Title</div>
-                <div className="text-gray-500"><i>Product Description</i></div>
-
-            </div>
+        <div className="font-bold">QUANTITY</div>
         </div>
     </div>
+
+    <div className="grid grid-cols-4 py-2 border-b border-gray-200">
+        <div className="">
+        <div className="grid grid-cols-4">
+            <div className="hidden sm:flex sm:justify-end sm:mr-2 ">
+            <button className="w-7 h-7 border border-red-500 text-red-500 text-center font-extrabold rounded-md hover:bg-red-500 hover:text-white">X</button>                  
+
+            </div>
+            <div className=" object-contain col-span-4 sm:col-span-3">image</div>
+        </div>
+        </div>
+        
+        <div className="col-span-2 ">
+            <div className="grid grid-cols-4">
+                <div className="col-span-4 sm:col-span-3 font-bold text-gray-600">Title</div>
+                <div className="col-span-4 sm:col-span-1 ">Price</div>
+            </div>
+        </div>
+
+        <div className="">
+            <div className="flex">
+                    <div className="flex justify-end">
+                        <button className="w-8 h-8 border text-gray-500 border-gray-500 rounded-full hover:bg-gray-500 hover:text-white">-</button>
+                    </div>
+                    <div className="centerAll px-2 w-10">1</div>
+                    <div className="">
+                    <button className="w-8 h-8 border border-gray-500 text-gray-500 rounded-full hover:bg-gray-500 hover:text-white">+</button>                  
+                    </div>    
+            </div>
+        </div>
+
     </div>
+</div>
 </div>
 
 <div className="centerAll">
