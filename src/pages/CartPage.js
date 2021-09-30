@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import HomeHeader from "../components/HomeHeader"
 import CartPageContent from "../components/CartPageContent"
 import SuccessfulCart from "../components/CartPageContentSuccessful"
+import EmptyCart from "../components/CartPageContentEmpty"
 
 
 
@@ -15,7 +16,7 @@ const CartPage = () => (
     <Seo title="The National Shrine of Saint Philomena" />
     <HomeHeader/>
     <Menu/>
-    <SuccessfulCart/>
+    <CartPageContent/>
  
   </Layout>
 )

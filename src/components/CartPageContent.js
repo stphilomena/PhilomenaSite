@@ -43,7 +43,14 @@ const CartPageContent = () => {
     };
     return (
         <form>
+<div className="">
 
+        <div className="centerAll bg-blue-600 py-2 text-white">
+            <p className="text-5xl">&#x26A0; &nbsp;</p>
+            <p className="text-4xl font-bold"> PAYMENT FAILED</p>
+        </div>
+        <div className="centerAll bg-blue-700 p-1 text-white">Your payment method has failed. Please enter another form of payment.</div>
+</div>
 <div className="text-red-500 font-black text-4xl centerAll py-10">SHOPPING CART</div>
 
 <div className="centerAll">
