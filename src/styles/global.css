@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 .menuLink {
-    @apply text-gray-600 whitespace-nowrap hover:text-white hover:bg-red-500 transition duration-300 py-5 px-3 md:px-3 lg:px-5 h-full;
- }
+   @apply text-gray-600 whitespace-nowrap hover:text-white hover:bg-red-500 transition duration-300 py-5 px-3 md:px-3 lg:px-5 h-full;
+}
+
+.menuLink2 {
+   @apply text-gray-600 whitespace-nowrap hover:text-red-700  transition duration-300;
+}
 
  .arrowDown {
     @apply mx-1 h-2 w-2 -translate-y-1 inline-block border-b-2 border-r-2 border-red-500 transform rotate-45 group-hover:border-white;
