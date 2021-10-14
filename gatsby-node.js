@@ -13,6 +13,36 @@ const camelCase = require("camelcase");
 const credentials = require('./philomena-site-93dddf35c845.json')
 const { createRemoteFileNode, createFileNodeFromBuffer } = require('gatsby-source-filesystem');
 const fs = require('fs');
+const path = require('path');
+
+exports.createPages = async({graphql, actions}) => {
+const {createPage, createRedirect} = actions;
+const productDetailTemplate = path.resolve(`src/templates/product.js`);
+
+await graphql(`
+query {
+    products: allGoogleSpreadsheetInventoryInventory {
+      nodes {
+        itemId
+        title
+      }
+    }
+  }
+  
+`).then(async result => {
+    if(result.errors) {
+        throw result.errors
+    }
+    result.data.products.nodes.forEach(product => {
+        console.log(product)
+        createPage({
+            path: product.itemId,
+            component: productDetailTemplate,
+            context: {id: product.itemId}
+        })
+    });
+})
+}
 
 exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store, getCache }) => {
     const {createNode} = actions;

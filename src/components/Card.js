@@ -1,4 +1,5 @@
 import * as React from "react"
+import {Link} from "gatsby"
 import {USD_P2} from "../helpers/NumberHelper";
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -8,7 +9,9 @@ const Card = ({item}) => (
 
         <section className="bg-white h-60 centerAll">
             <button className="centerAll h-60 w-60 bg-gray-400 transform translate-y-0 transition duration-500 hover:-translate-y-3 border-white border-b-4 group-hover:border-red-600">
+            <Link to={"/"+item.itemId}>
                 <GatsbyImage alt={item.title} image={getImage(item.image)}/>
+                </Link>
             </button>
         </section>
        

@@ -1,8 +1,50 @@
 import * as React from "react"
 import {StaticImage} from "gatsby-plugin-image"
+import {useStaticQuery, graphql} from "gatsby"
 import {Link} from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import {USD_P2} from "../helpers/NumberHelper";
 
-const HomeContent = () => (
+const HomeContent = () => {
+    const { inventory } = useStaticQuery(
+        graphql`
+        
+        query MyQuery {
+            inventory: allGoogleSpreadsheetInventoryInventory(
+              sort: {fields: id, order: DESC}
+              filter: {option1Quantity: {ne: "0"}}
+              limit: 3
+            ) {
+              nodes {
+                picture
+                option1Name
+                option1Price
+                option1Quantity
+                option2Name
+                option2Price
+                option2Quantity
+                image {
+                  childImageSharp {
+                    gatsbyImageData(placeholder: BLURRED)
+                  }
+                }
+                title
+                description
+              }
+            }
+          }
+          
+          
+          
+          
+        
+        `
+      )
+  
+      const items = inventory.nodes;
+      console.log(items);
+
+    return (
  
 <div>
 <div className="hover:filter hover:grayscale">
@@ -37,62 +79,25 @@ const HomeContent = () => (
       <div className="py-10 bg-gray-200 flex justify-center content-center">
         <div className="w-11/12">
         <div><h2 className="font-black text-4xl text-center text-red-900">DEVOTIONAL ITEMS</h2></div>
+	
 
-        <div className="sm:hidden">
-        <div className="p-5 flex justify-center content-center">
-        <div className="w-full bg-white rounded-xl shadow-xl content">
-                <StaticImage className="rounded-t-xl" src="../images/blessed_cord.jpeg" alt="Saint Philomena Blessed Cord" />
-                <div className="p-5">
-                <h3 className="font-bold">ST. PHILOMENA BLESSED CORD</h3>
-                <p className="text-gray-700">The cord is white and red, the white representing faith and virginity; the red the Saint's blood shed in martyrdom.</p>
-                <p className="text-gray-700">Price: $3.00</p>
-                </div>
-                <button className="w-full bg-red-600 rounded-b-xl p-3 text-white hover:bg-red-800">ADD TO CART</button>
-        </div>
-        </div>
-        </div>	
-
-    <div className="hidden sm:contents">
+    <div className="">
         <div className="grid grid-cols-4 gap-5 py-5">
             
-            <div className="w-full bg-white rounded-xl shadow-xl">
-                <StaticImage className="rounded-t-xl" src="../images/blessed_cord.jpeg" alt="Saint Philomena Blessed Cord" />
-             
+            {
+                items.map(item => (
+<div className="w-full bg-white rounded-xl shadow-xl">
+<GatsbyImage alt={item.title} image={getImage(item.image)}/>
+
              <div className="p-5">
-                <h3 className="font-bold">ST. PHILOMENA BLESSED CORD</h3>
-                <p className="text-gray-700">The cord is white and red, the white representing faith and virginity; the red the Saint's blood shed in martyrdom.</p>
-                <p className="text-gray-700">Price: $5.00</p>
+                <h3 className="font-bold">{item.title}</h3>
+                <p className="text-gray-700">{item.description}</p>
+                <p className="text-gray-700">Price: {USD_P2(item.option1Price)}</p>
              </div>
                 <button className="inset-x-0 bottom-0 w-full bg-red-600 rounded-b-xl p-3 text-white hover:bg-red-800">ADD TO CART</button>
             </div>
-
-            <div className="w-full bg-white rounded-xl shadow-xl">
-                <StaticImage className="rounded-t-xl" src="../images/blessed-oil.jpeg" alt="Saint Philomena Blessed Cord" />
-                <div className="p-5">
-                <h3 className="font-bold">HOLY OIL OF ST. PHILOMENA</h3>
-                <p className="text-gray-700">The Holy Oil of Saint Philomena is blessed annually on the Sunday nearest to her birthday, January 10th.</p>
-                <p className="text-gray-700">Price: $5.00</p>
-                </div>
-                <button className="w-full bg-red-600 rounded-b-xl p-3 text-white hover:bg-red-800">ADD TO CART</button>
-            </div>
-            <div className="w-full bg-white rounded-xl shadow-xl">
-                <StaticImage className="rounded-t-xl" src="../images/stphil_prayer_card.jpeg" alt="Saint Philomena Blessed Cord" />
-                <div className="p-5">
-                <h3 className="font-bold">ST. PHILOMENA PRAYER CARD</h3>
-                <p className="text-gray-700">St Philomena Prayer Card. Includes Novena prayer, full color picture and short history of the Saint.</p>
-                <p className="text-gray-700">Price: $5.00</p>
-                </div>
-                <button className="w-full bg-red-600 rounded-b-xl p-3 text-white hover:bg-red-800">ADD TO CART</button>
-            </div>
-            <div className="w-full bg-white rounded-xl shadow-xl">
-                <StaticImage className="rounded-t-xl" src="../images/st_phil_book.jpeg" alt="Saint Philomena Martyr Book" />
-                <div className="p-5">
-                <h3 className="font-bold">BOOK: SAINT PHILOMENA, VIRGIN AND MARTYR</h3>
-                <p className="text-gray-700">"St. Philomena, Virgin and Martyr " by Fr. de Lucia, pioneer of devotion to her in the early 19th. century. 72 pages.</p>
-                <p className="text-gray-700">Price: $5.00</p>
-                </div>
-                <button className="w-full bg-red-600 rounded-b-xl p-3 text-white hover:bg-red-800">ADD TO CART</button>
-            </div>
+                ))
+            }
             
         </div>
         </div>	
@@ -201,5 +206,6 @@ const HomeContent = () => (
 </div>
 </div>
 )
+    }
 
 export default HomeContent

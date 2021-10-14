@@ -5,6 +5,7 @@ import Menu from "../components/Menu"
 import Layout from "../components/Layout"
 import HomeHeader from "../components/HomeHeader"
 import HomeContent from "../components/HomeContent"
+
 // import {StaticQuery, graphql} from "gatsby";
 
 const Home = () => {
