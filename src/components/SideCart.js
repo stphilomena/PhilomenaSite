@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux'
 import {USD_P2} from '../helpers/NumberHelper'
 import {useState,useEffect} from "react";
 import {useFirstRender} from "../common/useFirstRender";
+import {Link} from "gatsby"
 
 const SideCart = () => {
 
@@ -44,9 +45,9 @@ const SideCart = () => {
 
                     <div className="centerAll w-full pb-10">
 
-                        <button className="bg-red-500 centerAll font-bold text-white p-5">
+                        <Link to={"/CartPage"} className="bg-red-500 centerAll font-bold text-white p-5">
                             CHECKOUT
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

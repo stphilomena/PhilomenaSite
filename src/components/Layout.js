@@ -11,7 +11,7 @@ import PropTypes from "prop-types"
 import Footer from "./Footer"
 import SideCart from "./SideCart";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, noCart }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
   //     site {
@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <main className={'w-screen overflow-hidden'}>{children}</main>
-      <SideCart/>
+        {noCart?"": <SideCart/>}
         <Footer/>
     </>
   )
@@ -33,6 +33,7 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+      noCart: PropTypes.bool
 }
 
 export default Layout

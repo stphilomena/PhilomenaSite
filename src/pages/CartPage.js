@@ -11,8 +11,7 @@ import EmptyCart from "../components/CartPageContentEmpty"
 
 
 const CartPage = () => (
-  <Layout>
-    
+  <Layout noCart={true}>
     <Seo title="The National Shrine of Saint Philomena" />
     <HomeHeader/>
     <Menu/>

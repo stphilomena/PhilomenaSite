@@ -1,6 +1,11 @@
 import * as React from "react"
-import {StaticImage} from "gatsby-plugin-image"
+import { useSelector} from 'react-redux'
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {addProduct, removeProduct} from "../state/cart";
+import {Link} from "gatsby";
+import {GatsbyImage,getImage} from "gatsby-plugin-image";
+import {USD_P2} from "../helpers/NumberHelper";
 
 const InputField = ({placeholder, type, className, value, setter, name, required}) => {
     const [pristine, setPristine] = useState(true);
@@ -20,6 +25,7 @@ const InputField = ({placeholder, type, className, value, setter, name, required
 };
 
 const CartPageContent = () => {
+
     const [cartState, setCartState] = useState({
         firstName: '',
         lastName: '',
@@ -41,16 +47,28 @@ const CartPageContent = () => {
         state[name] = e.target.value;
         setCartState(state);
     };
+
+    const shipping = useSelector((state) => state.cart.shipping)
+    const tax = useSelector((state) => state.cart.tax)
+    const cartTotal = useSelector((state) => state.cart.total)
+    const cartLength = useSelector((state) => state.cart.products.length)
+    const cartProducts = useSelector((state) => state.cart.products)
+    const dispatch = useDispatch();
+    const [errors, setErrors] = useState([]);
+
     return (
         <form>
-<div className="">
-
-        <div className="centerAll bg-blue-600 py-2 text-white">
-            <p className="text-5xl">&#x26A0; &nbsp;</p>
-            <p className="text-4xl font-bold"> PAYMENT FAILED</p>
-        </div>
-        <div className="centerAll bg-blue-700 p-1 text-white">Your payment method has failed. Please enter another form of payment.</div>
-</div>
+            {errors.length > 0 ?
+                <div className="">
+                    <div className="centerAll bg-blue-600 py-2 text-white">
+                        <p className="text-5xl">&#x26A0; &nbsp;</p>
+                        <p className="text-4xl font-bold"> PAYMENT FAILED</p>
+                    </div>
+                    <div className="centerAll bg-blue-700 p-1 text-white">Your payment method has failed. Please enter
+                        another form of payment.
+                    </div>
+                </div>
+                : ""}
 <div className="text-red-500 font-black text-4xl centerAll py-10">SHOPPING CART</div>
 
 <div className="centerAll">
@@ -68,37 +86,52 @@ const CartPageContent = () => {
         </div>
     </div>
 
-    <div className="grid grid-cols-4 py-2 border-b border-gray-200">
-        <div className="">
-        <div className="grid grid-cols-4">
-            <div className="hidden sm:flex sm:justify-end sm:mr-2 ">
-            <button className="w-7 h-7 border border-red-500 text-red-500 text-center font-extrabold rounded-md hover:bg-red-500 hover:text-white">X</button>                  
+    {cartProducts.map(product => { return (
+        <div className="grid grid-cols-4 py-2 border-b border-gray-200">
+            <div className="">
+                <div className="grid grid-cols-4">
+                    <div className="hidden sm:flex sm:justify-end sm:mr-2 ">
+                        <button className="w-7 h-7 border border-red-500 text-red-500 text-center font-extrabold rounded-md hover:bg-red-500 hover:text-white"
 
-            </div>
-            <div className=" object-contain col-span-4 sm:col-span-3">image</div>
-        </div>
-        </div>
-        
-        <div className="col-span-2 ">
-            <div className="grid grid-cols-4">
-                <div className="col-span-4 sm:col-span-3 font-bold text-gray-600">Title</div>
-                <div className="col-span-4 sm:col-span-1 ">Price</div>
-            </div>
-        </div>
+                                onClick={() => dispatch(removeProduct({itemId: product.itemId}))}
+                        >X</button>
 
-        <div className="">
-            <div className="flex">
-                    <div className="flex justify-end">
-                        <button className="w-8 h-8 border text-gray-500 border-gray-500 rounded-full hover:bg-gray-500 hover:text-white">-</button>
                     </div>
-                    <div className="centerAll px-2 w-10">1</div>
-                    <div className="">
-                    <button className="w-8 h-8 border border-gray-500 text-gray-500 rounded-full hover:bg-gray-500 hover:text-white">+</button>                  
-                    </div>    
+                    <div className=" object-contain col-span-4 sm:col-span-3">
+                        <GatsbyImage className={"h-32 w-32"} alt={product.title} image={getImage(product.image)} />
+
+                    </div>
+                </div>
             </div>
+
+            <div className="col-span-2 ">
+                <div className="grid grid-cols-4">
+                    <div className="col-span-4 sm:col-span-3 font-bold text-gray-600">{product.title}</div>
+                    <div className="col-span-4 sm:col-span-1 ">{USD_P2(product.price)}</div>
+                </div>
+            </div>
+
+            <div className="">
+                <div className="flex">
+                    <div className="flex justify-end">
+                        <button className="w-8 h-8 border text-gray-500 border-gray-500 rounded-full hover:bg-gray-500 hover:text-white"
+                                onClick={(e) => {e.preventDefault();dispatch(removeProduct({itemId: product.itemId, qty: 1}))}}
+
+                        >-</button>
+                    </div>
+                    <div className="centerAll px-2 w-10">{product.qty}</div>
+                    <div className="">
+                        <button className="w-8 h-8 border border-gray-500 text-gray-500 rounded-full hover:bg-gray-500 hover:text-white"
+                                onClick={(e) => {e.preventDefault(); dispatch(addProduct({itemId: product.itemId, qty: 1}))}}
+                        >+</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-    </div>
+    );}) }
+
 </div>
 </div>
 
@@ -114,10 +147,10 @@ const CartPageContent = () => {
                 </div>
         <div>
         <div className="col-span-1 text-left font-bold ">
-                <div>Subtotal</div>
-                <div>Taxes</div>
-                <div>Shipping</div>
-                <div>Order Total</div>
+                <div>{USD_P2(cartTotal)}</div>
+                <div>{USD_P2(tax)}</div>
+                <div>{USD_P2(shipping)}</div>
+                <div>{USD_P2(Number.parseFloat(cartTotal) + Number.parseFloat(tax) + Number.parseFloat(shipping))}</div>
             </div>
         </div>
     </div>
