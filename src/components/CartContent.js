@@ -22,14 +22,14 @@ const CartContent = () => {
                 </div> : ""}
             {cartProducts.map(product => (
                     <div key={product.itemId} className="p-5 grid grid-cols-3 gap-5 justify-start w-full">
-                        <div className="bg-gray-300 cols-span-1 w-full centerAll">
+                        <div className="cols-span-1 w-full centerAll">
                             <GatsbyImage alt={product.title} image={getImage(product.image)} />
                         </div>
                         <div className="justify-start col-span-2">
-                            <div>{product.title}</div>
-                            <div>Quantity: {product.qty}</div>
-                            <div>Total: {USD_P2(product.qty * product.price)}</div>
-                            <div onClick={() => dispatch(removeProduct({itemId: product.itemId}))}>(Remove)</div>
+                            <div className="font-bold text-sm">{product.title}</div>
+                            <div className="text-gray-600">Quantity: {product.qty}</div>
+                            <div className="text-gray-600">Total: {USD_P2(product.qty * product.price)}</div>
+                            <div className="text-red-600 cursor-pointer" onClick={() => dispatch(removeProduct({itemId: product.itemId}))}>Remove</div>
                         </div>
                     </div>
                 )

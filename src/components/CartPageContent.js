@@ -90,7 +90,7 @@ const CartPageContent = () => {
         <div className="grid grid-cols-4 py-2 border-b border-gray-200">
             <div className="">
                 <div className="grid grid-cols-4">
-                    <div className="hidden sm:flex sm:justify-end sm:mr-2 ">
+                    <div className="hidden sm:flex sm:justify-end sm:mr-2 items-center">
                         <button className="w-7 h-7 border border-red-500 text-red-500 text-center font-extrabold rounded-md hover:bg-red-500 hover:text-white"
 
                                 onClick={() => dispatch(removeProduct({itemId: product.itemId}))}
@@ -105,14 +105,14 @@ const CartPageContent = () => {
             </div>
 
             <div className="col-span-2 ">
-                <div className="grid grid-cols-4">
-                    <div className="col-span-4 sm:col-span-3 font-bold text-gray-600">{product.title}</div>
+                <div className="grid grid-cols-4  h-32 items-center">
+                    <div className="col-span-4 sm:col-span-3 font-bold text-gray-600 ">{product.title}</div>
                     <div className="col-span-4 sm:col-span-1 ">{USD_P2(product.price)}</div>
                 </div>
             </div>
 
             <div className="">
-                <div className="flex">
+                <div className="flex items-center h-32">
                     <div className="flex justify-end">
                         <button className="w-8 h-8 border text-gray-500 border-gray-500 rounded-full hover:bg-gray-500 hover:text-white"
                                 onClick={(e) => {e.preventDefault();dispatch(removeProduct({itemId: product.itemId, qty: 1}))}}
