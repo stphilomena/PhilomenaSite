@@ -19,6 +19,7 @@ const Shop = () => {
                       id
                       itemId
                       title
+                      slug
                       picture
                       option2Quantity
                       option2Price
@@ -44,13 +45,12 @@ const Shop = () => {
         <Layout>
             <Seo title="Schedule the Visit | National Shrine of Saint Philomena"/>
             <HomeHeader/>
-            <SideCart/>
             <Menu/>
             <div className="centerAll py-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-5/6 gap-5 p-5">
                     {items.map(item => {
                         return (
-                            <div className="centerAll pt-20"><Card item={item}/></div>
+                            <div key={item.itemId} className="centerAll pt-20"><Card item={item}/></div>
                         )
                     })}
                 </div>

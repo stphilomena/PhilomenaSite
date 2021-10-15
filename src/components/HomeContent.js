@@ -5,6 +5,9 @@ import {Link} from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {USD_P2} from "../helpers/NumberHelper";
 
+import {useDispatch} from "react-redux";
+import {addProduct} from "../state/cart";
+
 const HomeContent = () => {
     const { inventory } = useStaticQuery(
         graphql`
@@ -16,7 +19,10 @@ const HomeContent = () => {
               limit: 3
             ) {
               nodes {
+                  id 
+                  itemId
                 picture
+                slug
                 option1Name
                 option1Price
                 option1Quantity
@@ -33,16 +39,21 @@ const HomeContent = () => {
               }
             }
           }
-          
-          
-          
-          
         
         `
       )
   
       const items = inventory.nodes;
       console.log(items);
+
+      const dispatch = useDispatch();
+    const onAddToCart = (item) => dispatch(addProduct({
+        ...item,
+        name: item.option1Name,
+        price: item.option1Price,
+        qty: 1,
+        availQty: item.option1Quantity
+    }))
 
     return (
  
@@ -74,36 +85,37 @@ const HomeContent = () => {
 
 
 <div>
-<section id="shop">
-
-      <div className="py-10 bg-gray-200 flex justify-center content-center">
-        <div className="w-11/12">
-        <div><h2 className="font-black text-4xl text-center text-red-900">DEVOTIONAL ITEMS</h2></div>
-	
-
-    <div className="">
-        <div className="grid grid-cols-4 gap-5 py-5">
-            
-            {
-                items.map(item => (
-<div className="w-full bg-white rounded-xl shadow-xl">
-<GatsbyImage alt={item.title} image={getImage(item.image)}/>
-
-             <div className="p-5">
-                <h3 className="font-bold">{item.title}</h3>
-                <p className="text-gray-700">{item.description}</p>
-                <p className="text-gray-700">Price: {USD_P2(item.option1Price)}</p>
-             </div>
-                <button className="inset-x-0 bottom-0 w-full bg-red-600 rounded-b-xl p-3 text-white hover:bg-red-800">ADD TO CART</button>
+    <section id="shop">
+        <div className="py-10 bg-gray-200 flex justify-center content-center">
+            <div className="w-11/12">
+                <div><h2 className="font-black text-4xl text-center text-red-900">DEVOTIONAL ITEMS</h2></div>
+                <div className="">
+                    <div className="grid grid-cols-4 gap-5 py-5">
+                        {
+                            items.map(item => (
+                                <div key={item.id} className="w-full bg-white rounded-xl shadow-xl">
+                                    <Link to={"/" + item.slug}>
+                                        <GatsbyImage alt={item.title} image={getImage(item.image)}/>
+                                    </Link>
+                                    <div className="p-5">
+                                        <h3 className="font-bold">{item.title}</h3>
+                                        <p className="text-gray-700">{item.description}</p>
+                                        <p className="text-gray-700">Price: {USD_P2(item.option1Price)}</p>
+                                    </div>
+                                    <button
+                                        className="inset-x-0 bottom-0 w-full bg-red-600 rounded-b-xl p-3 text-white hover:bg-red-800"
+                                        onClick={() => onAddToCart(item)}
+                                    >ADD
+                                        TO CART
+                                    </button>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
-                ))
-            }
-            
         </div>
-        </div>	
-    </div>
-    </div>
-  </section>
+    </section>
 </div>
 
 

@@ -9,7 +9,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
 import Footer from "./Footer"
-
+import SideCart from "./SideCart";
 
 const Layout = ({ children }) => {
   // const data = useStaticQuery(graphql`
@@ -24,7 +24,8 @@ const Layout = ({ children }) => {
   //
   return (
     <>
-      <main>{children}</main>
+      <main className={'w-screen overflow-hidden'}>{children}</main>
+      <SideCart/>
         <Footer/>
     </>
   )

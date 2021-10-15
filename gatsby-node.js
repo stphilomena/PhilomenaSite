@@ -14,8 +14,10 @@ const credentials = require('./philomena-site-93dddf35c845.json')
 const { createRemoteFileNode, createFileNodeFromBuffer } = require('gatsby-source-filesystem');
 const fs = require('fs');
 const path = require('path');
+const slug = require('slug')
 
 exports.createPages = async({graphql, actions}) => {
+
 const {createPage, createRedirect} = actions;
 const productDetailTemplate = path.resolve(`src/templates/product.js`);
 
@@ -25,6 +27,7 @@ query {
       nodes {
         itemId
         title
+        slug
       }
     }
   }
@@ -36,7 +39,7 @@ query {
     result.data.products.nodes.forEach(product => {
         console.log(product)
         createPage({
-            path: product.itemId,
+            path: product.slug,
             component: productDetailTemplate,
             context: {id: product.itemId}
         })
@@ -94,6 +97,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store
                     createNode({
                         ...node,
                         id: createNodeId(`${typePrefix} ${spreadsheetName} ${sheetTitle} ${i}`),
+                        slug: slug(node.title + " " + node.itemId),
                         internal: {
                             type: `${typePrefix}${spreadsheetName}${sheetTitle}`,
                             contentDigest: createContentDigest(node)
