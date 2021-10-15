@@ -29,11 +29,11 @@ const Layout = ({ children, noCart }) => {
         <Footer/>
     </>
   )
-}
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-      noCart: PropTypes.bool
+   noCart: PropTypes.bool
 }
 
 export default Layout
