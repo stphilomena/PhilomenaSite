@@ -5,3 +5,5 @@
  */
 
 // You can delete this file if you're not using it
+import wrapWithProvider from "./redux-provider"
+export const wrapRootElement = wrapWithProvider
