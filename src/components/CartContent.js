@@ -9,7 +9,6 @@ import {Link} from "gatsby";
 const CartContent = () => {
 
     const shipping = useSelector((state) => state.cart.shipping)
-    const tax = useSelector((state) => state.cart.tax)
     const cartProducts = useSelector((state) => state.cart.products)
     const dispatch = useDispatch();
 
