@@ -58,7 +58,7 @@ const HomeContent = () => {
     return (
  
 <div>
-<div className="hover:filter hover:grayscale">
+<div className="">
 <section id="philomena">
     <div className="bg-gradient-to-tl from-yellow-800 via-yellow-500 to-yellow-200 centerAll">
         <div className="max-w-3/4">
@@ -90,7 +90,7 @@ const HomeContent = () => {
             <div className="w-11/12">
                 <div><h2 className="font-black text-4xl text-center text-red-900">DEVOTIONAL ITEMS</h2></div>
                 <div className="">
-                    <div className="grid grid-cols-4 gap-5 py-5">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 py-5">
                         {
                             items.map(item => (
                                 <div key={item.id} className="w-full bg-white rounded-xl shadow-xl">
