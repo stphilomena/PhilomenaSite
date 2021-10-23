@@ -14,11 +14,11 @@ const Footer = () => (
                     <div>
                         <h2 className="font-bold text-white">QUICK LINKS</h2>
                         <ul>
-                            <li><Link className="footerLink" to="/">Home</Link></li>
-                            <li><Link className="footerLink" to="/philomena">About St Philomena</Link></li>
-                            <li><Link className="footerLink" to="/shop">Shop Devotional Items</Link></li>
-                            <li><Link className="footerLink" to="/about">About the Shrine</Link></li>
-                            <li><Link className="footerLink" to="/schedule">Schedule a Visit</Link></li>
+                            <li><Link className="footerLink" to="http://www.shrineofstphilomena.com">Home</Link></li>
+                            <li><Link className="footerLink" to="http://www.shrineofstphilomena.com/philomena">About St Philomena</Link></li>
+                            <li><Link className="footerLink" to="http://www.shrineofstphilomena.com/shop">Shop Devotional Items</Link></li>
+                            <li><Link className="footerLink" to="http://www.shrineofstphilomena.com/about">About the Shrine</Link></li>
+                            <li><Link className="footerLink" to="http://www.shrineofstphilomena.com/contact">Schedule a Visit</Link></li>
                         </ul>
                     </div>
                 </div>
