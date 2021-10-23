@@ -31,7 +31,7 @@ const SideCart = () => {
                     />
                 </div>
                 <div className="w-full">
-                    <div className="bg-red-500 w-96 h-10 right-0 z-0 centerAll font-bold text-white">
+                    <div className="bg-red-500 w-96 h-10 right-0 z-10 centerAll font-bold text-white">
                         SHOPPING CART
                     </div>
 
