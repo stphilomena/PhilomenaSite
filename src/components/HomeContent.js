@@ -99,7 +99,7 @@ const HomeContent = () => {
                                     </Link>
                                     <div className="p-5">
                                         <h3 className="font-bold">{item.title}</h3>
-                                        <p className="text-gray-700">{item.description}</p>
+                                        <p className="text-gray-700 hidden md:block">{item.description}</p>
                                         <p className="text-gray-700">Price: {USD_P2(item.option1Price)}</p>
                                     </div>
                                     <button
