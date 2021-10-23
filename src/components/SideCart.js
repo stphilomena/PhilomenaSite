@@ -21,7 +21,7 @@ const SideCart = () => {
     }, [firstRender, cartLength, cartTotal])
 
     return (
-        <div className={"fixed top-10 right-0 w-96 overflow-x-hidden h-screen"}>
+        <div className={"fixed top-10 right-0 w-96 overflow-x-hidden"}>
             <div
                 className={"flex relative bg-white w-80 shadow-xl transition-all duration-300 ease-in " + (!expanded ? "-right-80 ml-16" : "-right-16")}>
                 <div id="cartButton"
@@ -31,7 +31,7 @@ const SideCart = () => {
                     />
                 </div>
                 <div className="w-full">
-                    <div className="bg-red-500 w-96 h-10 right-0 z-10 centerAll font-bold text-white">
+                    <div className="bg-red-500 w-80 h-10 right-0 z-10 centerAll font-bold text-white">
                         SHOPPING CART
                     </div>
 

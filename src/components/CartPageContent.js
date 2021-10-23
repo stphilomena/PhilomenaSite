@@ -49,7 +49,6 @@ const CartPageContent = () => {
     };
 
     const shipping = useSelector((state) => state.cart.shipping)
-    const tax = useSelector((state) => state.cart.tax)
     const cartTotal = useSelector((state) => state.cart.total)
     const cartLength = useSelector((state) => state.cart.products.length)
     const cartProducts = useSelector((state) => state.cart.products)
@@ -141,16 +140,14 @@ const CartPageContent = () => {
     <div className="grid grid-cols-2 gap-2 px-10">
                 <div className="col-span-1 text-right">
                     <div>Subtotal:</div>
-                    <div>Taxes:</div>
                     <div>Shipping:</div>
                     <div>Order Total:</div>
                 </div>
         <div>
         <div className="col-span-1 text-left font-bold ">
                 <div>{USD_P2(cartTotal)}</div>
-                <div>{USD_P2(tax)}</div>
                 <div>{USD_P2(shipping)}</div>
-                <div>{USD_P2(Number.parseFloat(cartTotal) + Number.parseFloat(tax) + Number.parseFloat(shipping))}</div>
+                <div>{USD_P2(Number.parseFloat(cartTotal) + Number.parseFloat(shipping))}</div>
             </div>
         </div>
     </div>
