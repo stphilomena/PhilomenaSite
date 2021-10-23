@@ -93,7 +93,7 @@ const HomeContent = () => {
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 py-5">
                         {
                             items.map(item => (
-                                <div key={item.id} className="w-full bg-white rounded-xl shadow-xl">
+                                <div key={item.id} className="relative w-full bg-white shadow-xl pb-10">
                                     <Link to={"/" + item.slug}>
                                         <GatsbyImage alt={item.title} image={getImage(item.image)}/>
                                     </Link>
@@ -103,7 +103,7 @@ const HomeContent = () => {
                                         <p className="text-gray-700">Price: {USD_P2(item.option1Price)}</p>
                                     </div>
                                     <button
-                                        className="inset-x-0 bottom-0 w-full bg-red-600 rounded-b-xl p-3 text-white hover:bg-red-800"
+                                        className="absolute mb-0 inset-x-0 bottom-0 w-full bg-red-600  p-3 text-white hover:bg-red-800"
                                         onClick={() => onAddToCart(item)}
                                     >ADD
                                         TO CART
