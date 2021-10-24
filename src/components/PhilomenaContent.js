@@ -1,5 +1,5 @@
 import * as React from "react"
-
+import {StaticImage} from "gatsby-plugin-image"
 
 const PhilomenaContent = () => (
     <div>
@@ -52,8 +52,7 @@ const PhilomenaContent = () => (
                         in his solemn deposition.<br/>
                         <a href="https://books.google.com/books/about/Saint_Philomena.html?id=MEAqCgAAQBAJ&amp;printsec=frontcover&amp;source=kp_read_button#v=onepage&amp;q&amp;f=false"
                            rel="nofollow">See Sr. Marie Helen Mohr’s book &gt;</a>
-                        <p>This wonder was only the first of <a href="https://www.saintphilomenashrine.org/miracles/"
-                                                                rel="nofollow">innumerable miracles</a>, of which here
+                        <p>This wonder was only the first of innumerable miracles, of which here
                             is mentioned only a tiny fraction. The miraculous multiplication of her bone dust, the
                             mysterious re-painting of a botched paper-maiche statue made (or rather, attempted) in her
                             likeness, and the sealing of a cracked marble altar created in her honor were all among her
@@ -82,13 +81,9 @@ const PhilomenaContent = () => (
 
         </section>
 
-
-        <figure className="content-page__media content-page__media--image">
-        <span id="styles-0-0" className="styles file-styles dici_image_full_width">
-        <img width="800" height="450" alt={"Philomena Site"}
-             src="http://www.sspxflorida.com/sites/sspx/files/styles/dici_image_full_width/public/media/1fbskw3ft36wnno9o5cy_saint-philomena_500.jpg?itok=f9vpDs09"/>
-        </span>
-        </figure>
+        <div className="centerAll py-10">
+        <StaticImage className="centerAll w-2/3 md:w-5/6 lg:w-2/3" src="../images/saint_philomena_tomb_stones.jpg" alt="Saint Philomena Tomb Stones" />
+        </div>
 
         <section className="content-page__text">
             <h2>The Life and Martyrdom of Saint Philomena</h2>
