@@ -162,6 +162,7 @@ const CartPageContent = () => {
     </div>
     </div>   
 </div>
+/* TEST */
 
 <div className="py-10"> </div>
 <div className="centerAll">
