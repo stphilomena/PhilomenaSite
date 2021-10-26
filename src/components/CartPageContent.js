@@ -142,6 +142,7 @@ const CartPageContent = () => {
                     <div>Subtotal:</div>
                     <div>Shipping:</div>
                     <div>Order Total:</div>
+                    <div>/* TEST */</div>
                 </div>
         <div>
         <div className="col-span-1 text-left font-bold ">
@@ -162,7 +163,6 @@ const CartPageContent = () => {
     </div>
     </div>   
 </div>
-/* TEST */
 
 <div className="py-10"> </div>
 <div className="centerAll">
