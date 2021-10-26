@@ -7,27 +7,6 @@ import {Link} from "gatsby";
 import {GatsbyImage,getImage} from "gatsby-plugin-image";
 import {USD_P2} from "../helpers/NumberHelper";
 
-import React from "react";
-import ReactDOM from "react-dom"
-
-const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
-
- const createOrder = (data, actions) => {
-    return actions.order.create({
-      purchase_units: [
-        {
-          amount: {
-            value: "0.01",
-          },
-        },
-      ],
-    });
-  }
-
-const onApprove = (data, actions) => {
-    return actions.order.capture();
-  }
-
 const InputField = ({placeholder, type, className, value, setter, name, required}) => {
     const [pristine, setPristine] = useState(true);
     const onChange = (e) => {
@@ -178,10 +157,7 @@ const CartPageContent = () => {
                 PLACE ORDER
         </button>
     </a>
-    <PayPalButton
-        createOrder={(data, actions) => createOrder(data, actions)}
-        onApprove={(data, actions) => onApprove(data, actions)}
-      />
+   
     </div>
     </div>
     </div>   
