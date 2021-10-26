@@ -72,7 +72,7 @@ const HomeContent = () => {
         <div>
         <h1 className="text-white font-black text-5xl">ABOUT SAINT PHILOMENA</h1>
         <br/>
-        <p className="md:w-3/4 text-white">On ONE May 24th, 1802, cleaning and clearing work was in progress in the most ancient of all the catacombs in Rome, the St. Priscilla catacombs, which dated almost from apostolic times. One of the workers, while digging in one of the ancient tunnels, by accident found a shelf-tomb that had never been opened. (Most of the graves in this cemetery had been opened, and their relics removed for safety.) The tomb was clearly the tomb of a martyr, with rough inscriptions including arrows, a lance, an anchor, a lily or flame, and the words: PAX TECUM FILUMENA</p><br/>
+        <p className="md:w-3/4 text-white">On May 24th, 1802, cleaning and clearing work was in progress in the most ancient of all the catacombs in Rome, the St. Priscilla catacombs, which dated almost from apostolic times. One of the workers, while digging in one of the ancient tunnels, by accident found a shelf-tomb that had never been opened. (Most of the graves in this cemetery had been opened, and their relics removed for safety.) The tomb was clearly the tomb of a martyr, with rough inscriptions including arrows, a lance, an anchor, a lily or flame, and the words: PAX TECUM FILUMENA</p><br/>
           
         <Link to="/philomena"><button className="shadow-lg py-5 px-7 font-bold text-lg transform scale-100 rounded-full bg-yellow-500 md:bg-red-700 text-white hover:scale-105">LEARN MORE</button></Link>
         </div>
