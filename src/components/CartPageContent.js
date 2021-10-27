@@ -187,14 +187,14 @@ paypal.Buttons({
         </div>
     </div>
     <div className="py-5 ">
-    <a href="#checkout">
-        <button className="bg-red-500 hover:bg-red-700 text-white p-5 w-full font-bold rounded-full">
-                PLACE ORDER
-        </button>
-    </a>
+        <a href="#checkout">
+            <button className="bg-red-500 hover:bg-red-700 text-white p-5 w-full font-bold rounded-full">
+                    PLACE ORDER
+            </button>
+        </a>
    
-                            <div id="paypal"></div>
     </div>
+                            <div id="paypal"></div>
     </div>
     </div>   
 </div>
