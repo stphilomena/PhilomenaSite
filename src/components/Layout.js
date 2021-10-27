@@ -12,9 +12,8 @@ import Footer from "./Footer"
 import SideCart from "./SideCart";
 
 const Layout = ({ children, noCart }) => {
-
-var PAYPAL_SCRIPT = 'https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk';
-  var script = document.createElement('script');
+  const PAYPAL_SCRIPT = 'https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk';
+  const script = document.createElement('script');
   script.setAttribute('src', PAYPAL_SCRIPT);
   document.head.appendChild(script);
   // const data = useStaticQuery(graphql`
