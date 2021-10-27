@@ -7,11 +7,6 @@ import {Link} from "gatsby";
 import {GatsbyImage,getImage} from "gatsby-plugin-image";
 import {USD_P2} from "../helpers/NumberHelper";
 
-var PAYPAL_SCRIPT = 'https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk';
-  var script = document.createElement('script');
-  script.setAttribute('src', PAYPAL_SCRIPT);
-  document.head.appendChild(script);
-
 const InputField = ({placeholder, type, className, value, setter, name, required}) => {
     const [pristine, setPristine] = useState(true);
     const onChange = (e) => {
