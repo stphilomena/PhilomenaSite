@@ -2,8 +2,8 @@ import * as React from "react"
 import {Link} from "gatsby";
 
 const Menu = () => (
-<script src="https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk" />
 <div className="bg-gray-200 border-b-2 border-gray-400">
+<script src="https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk" />
   <ul className="centerAll text-sm lg:text-2xl px-2">
     <li className="menuLink"><Link to="/philomena">St Philomena</Link></li>
     <li className="menuLink"><Link to="/shop">Shop</Link></li>
