@@ -11,7 +11,6 @@ const Menu = () => (
     <li className="menuLink"><a href="https://www.paypal.com/us/fundraiser/charity/1718855">Donate</a></li>
 </ul>      
 </div>
-<script src="https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk" />
 )
 
 export default Menu
