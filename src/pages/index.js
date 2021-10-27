@@ -24,7 +24,7 @@ const Home = () => {
 
         <Layout>
 
-            <Seo title="The National Shrine of Saint Philomena" />
+            <Seo title="TheX National Shrine of Saint Philomena" />
             <HomeHeader/>
             <Menu/>
             <HomeContent/>
