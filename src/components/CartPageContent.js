@@ -159,9 +159,11 @@ const CartPageContent = () => {
         </a>
     </div>
 
+    <!-- Set up a container element for the button -->
     <div id="paypal-button-container"></div>
+
     <script>
-   paypal.Buttons({
+      paypal.Buttons({
 
         // Sets up the transaction when a payment button is clicked
         createOrder: function(data, actions) {
@@ -189,7 +191,8 @@ const CartPageContent = () => {
             // Or go to another URL:  actions.redirect('thank_you.html');
           });
         }
-      }).render('#paypal-button-container
+      }).render('#paypal-button-container');
+
     </script>
 
     </div>
