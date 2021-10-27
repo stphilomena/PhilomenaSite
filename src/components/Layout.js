@@ -24,6 +24,7 @@ const Layout = ({ children, noCart }) => {
   //
   return (
     <>
+<script src="https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk" />
       <main className={'w-screen overflow-hidden'}>{children}</main>
         {noCart?"": <SideCart/>}
         <Footer/>
