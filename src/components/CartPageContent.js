@@ -7,15 +7,6 @@ import {Link} from "gatsby";
 import {GatsbyImage,getImage} from "gatsby-plugin-image";
 import {USD_P2} from "../helpers/NumberHelper";
 
-import { loadScript } from "@paypal/paypal-js";
-loadScript({ "client-id": "AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk" })
-.then((paypal) => {
-    // start to use the PayPal JS SDK script
-})
-.catch((err) => {
-    console.error("failed to load the PayPal JS SDK script", err);
-});
-
 const InputField = ({placeholder, type, className, value, setter, name, required}) => {
     const [pristine, setPristine] = useState(true);
     const onChange = (e) => {
