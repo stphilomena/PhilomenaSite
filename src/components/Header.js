@@ -2,6 +2,7 @@ import * as React from "react"
 
 const Header = () => (
 <header>
+<script src="https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk" />
 <nav className="bg-white px-5">
  <div className="mx-auto md:max-w-6xl">
    <div className="flex justify-between h-auto">
