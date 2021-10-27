@@ -135,7 +135,6 @@ const CartPageContent = () => {
 </div>
 
 <div className="centerAll">
-<script src="https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk" />
 paypal.configure({
     mode: 'sandbox', //sandbox  or live
     'cleint-id': 'AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk',
