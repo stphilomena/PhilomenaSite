@@ -13,7 +13,8 @@ import EmptyCart from "../components/CartPageContentEmpty"
 const CartPage = () => (
   <Layout noCart={true}>
     <Seo title="The National Shrine of Saint Philomena" />
-    <HomeHeader/>
+    <HomeHeader/>      
+<script src="https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk" />
     <Menu/>
     <CartPageContent/>
  
