@@ -162,7 +162,7 @@ const CartPageContent = () => {
 
     </div>
     </div>   
-    <div id="paypal-button-container" className=""></div>
+    <div id="paypal-button-container" className="">Here</div>
     <script>
       paypal.Buttons({
 
