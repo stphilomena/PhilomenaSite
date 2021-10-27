@@ -8,11 +8,6 @@ import CartPageContent from "../components/CartPageContent"
 import SuccessfulCart from "../components/CartPageContentSuccessful"
 import EmptyCart from "../components/CartPageContentEmpty"
 
-var PAYPAL_SCRIPT = 'https://www.paypal.com/sdk/js?client-id=AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk';
-  var script = document.createElement('script');
-  script.setAttribute('src', PAYPAL_SCRIPT);
-  document.head.appendChild(script);
-
 const CartPage = () => (
   <Layout noCart={true}>
     <Seo title="The National Shrine of Saint Philomena" />
