@@ -157,14 +157,14 @@ const CartPageContent = () => {
                     PLACE ORDER
             </button>
         </a>
-        <!-- Set up a container element for the button -->
-        <div id="paypal-button-container">HOLA - TEST</div>
     </div>
 
 
     </div>
     </div>   
 </div>
+        <!-- Set up a container element for the button -->
+        <div id="paypal-button-container">HOLA - TEST</div>
 
 <div className="py-10"> </div>
 <div className="centerAll">
