@@ -164,7 +164,7 @@ const CartPageContent = () => {
     </div>   
 </div>
         <!-- Set up a container element for the button -->
-        <div id="paypal-button-container">HOLA - TEST</div>
+        <div id="paypal-button-container" className="">HOLA - TEST</div>
 
 <div className="py-10"> </div>
 <div className="centerAll">
