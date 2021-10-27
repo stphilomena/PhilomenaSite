@@ -7,6 +7,41 @@ import {Link} from "gatsby";
 import {GatsbyImage,getImage} from "gatsby-plugin-image";
 import {USD_P2} from "../helpers/NumberHelper";
 
+paypal.configure({
+    mode: 'sandbox', //sandbox  or live
+    'cleint-id': 'AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk',
+    'client-secret': 'EC3BCUQ9YXzvgQQ3T0AJC0hRQqdDyfxT_9z3xkwAt-OK2maDgbZtZ1EMmdKdFZCOkqvJgNOXs2gkf-9J'
+})
+
+paypal.Buttons({
+
+    // Sets up the transaction when a payment button is clicked
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '77.44' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+          }
+        }]
+      });
+    },
+
+    // Finalize the transaction after payer approval
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(orderData) {
+        // Successful capture! For dev/demo purposes:
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            var transaction = orderData.purchase_units[0].payments.captures[0];
+            alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+        // When ready to go live, remove the alert and show a success message within this page. For example:
+        // var element = document.getElementById('paypal');
+        // element.innerHTML = '';
+        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+        // Or go to another URL:  actions.redirect('thank_you.html');
+      });
+    }
+  }).render('#paypal')
 const InputField = ({placeholder, type, className, value, setter, name, required}) => {
     const [pristine, setPristine] = useState(true);
     const onChange = (e) => {
@@ -135,41 +170,6 @@ const CartPageContent = () => {
 </div>
 
 <div className="centerAll">
-paypal.configure({
-    mode: 'sandbox', //sandbox  or live
-    'cleint-id': 'AVMHbhoq5ugxAWgjRLW7ZhDJEL9jOAGIw5TlvRXBCgHEBUhC2xD96nL6nQd-o4wajuw9AP-lSyXZLbbk',
-    'client-secret': 'EC3BCUQ9YXzvgQQ3T0AJC0hRQqdDyfxT_9z3xkwAt-OK2maDgbZtZ1EMmdKdFZCOkqvJgNOXs2gkf-9J'
-})
-
-paypal.Buttons({
-
-    // Sets up the transaction when a payment button is clicked
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '77.44' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
-          }
-        }]
-      });
-    },
-
-    // Finalize the transaction after payer approval
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(orderData) {
-        // Successful capture! For dev/demo purposes:
-            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-            var transaction = orderData.purchase_units[0].payments.captures[0];
-            alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-
-        // When ready to go live, remove the alert and show a success message within this page. For example:
-        // var element = document.getElementById('paypal');
-        // element.innerHTML = '';
-        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-        // Or go to another URL:  actions.redirect('thank_you.html');
-      });
-    }
-  }).render('#paypal')
     <div className="w-10/12 py-5">
     <div className=" w-max">
     <div className="grid grid-cols-2 gap-2 px-10">
