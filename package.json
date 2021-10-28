@@ -5,16 +5,19 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "@reduxjs/toolkit": "^1.6.2",
     "babel-eslint": "^10.1.0",
     "camelcase": "^6.2.0",
     "currency.js": "^2.0.4",
+    "dotenv": "^10.0.0",
     "gatsby": "^3.6.2",
     "gatsby-node-helpers": "^1.2.1",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
     "gatsby-plugin-image": "^1.11.0",
     "gatsby-plugin-manifest": "^3.6.0",
     "gatsby-plugin-offline": "^4.6.0",
+    "gatsby-plugin-paypal": "^1.1.6",
     "gatsby-plugin-react-helmet": "^4.6.0",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.12.0",
@@ -31,6 +34,7 @@
     "slug": "^5.1.0"
   },
   "devDependencies": {
+    "Validator": "^1.1.4",
     "autoprefixer": "^10.2.6",
     "eslint": "^7.32.0",
     "eslint-config-react-app": "^6.0.0",

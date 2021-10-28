@@ -1,11 +1,15 @@
 import * as React from "react"
 import { useSelector} from 'react-redux'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {addProduct, removeProduct} from "../state/cart";
+import {updateShippingField, updateBillingField, updateShippingInfo, updateBillingInfo} from "../state/checkout"
 import {Link} from "gatsby";
 import {GatsbyImage,getImage} from "gatsby-plugin-image";
 import {USD_P2} from "../helpers/NumberHelper";
+import Paypal from "gatsby-plugin-paypal"
+import Combobox from "./forms/combobox";
+import statesList from "./forms/states";
 
 const InputField = ({placeholder, type, className, value, setter, name, required}) => {
     const [pristine, setPristine] = useState(true);
@@ -24,30 +28,57 @@ const InputField = ({placeholder, type, className, value, setter, name, required
     )
 };
 
-const CartPageContent = () => {
 
-    const [cartState, setCartState] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        address1: '',
-        address2: '',
-        city: '',
-        state: '',
-        zip: '',
-        cc: '',
-        exp: '',
-        svc:'',
-        login:'',
-        password: ''
-    })
+const CartPageContent = () => {
+    const billingInfo = useSelector((state) => state.checkout.billing)
+    const shippingInfo = useSelector((state) => state.checkout.shipping)
+
     const setter = (e, name) => {
-        const state = {...cartState};
-        state[name] = e.target.value;
-        setCartState(state);
+        // const state = {...shippingInfo};
+        // state[name] = e.target.value;
+        // setShippingInfo(state);
+        dispatch(updateShippingField({name: name, value: e.target.value}))
     };
 
+    const setterBilling = (e, name) => {
+        // const state = {...billingInfo};
+        // state[name] = e.target.value;
+        // setBillingInfo(state);
+        dispatch(updateBillingField({name: name, value: e.target.value}))
+    };
+    const copyToShipping = (e) => {
+        e.preventDefault();
+        // setShippingInfo({...billingInfo});
+        dispatch(updateShippingInfo({info: billingInfo}))
+    }
+    const copyToBilling = (e) => {
+        e.preventDefault();
+        dispatch(updateBillingInfo({info: shippingInfo}))
+    }
+    useEffect(() => {
+        if (typeof window !== `undefined`) {
+            window.order = {
+                shipping: shippingInfo,
+                billing: billingInfo,
+                cart: cartProducts.map(item => {
+                    return {itemId: item.itemId, qty: item.qty}
+                })
+            }
+        }
+    });
+    const submitOrder = () => {
+        return fetch('/api/create-order',
+            {
+                headers: {'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(window.order)
+            })
+            .then((res) => res.json())
+            .then(data => data.orderID)
+            .catch(err => {console.log(err)});
+    }
     const shipping = useSelector((state) => state.cart.shipping)
     const cartTotal = useSelector((state) => state.cart.total)
     const cartLength = useSelector((state) => state.cart.products.length)
@@ -86,7 +117,7 @@ const CartPageContent = () => {
     </div>
 
     {cartProducts.map(product => { return (
-        <div className="grid grid-cols-4 py-2 border-b border-gray-200">
+        <div key={product.itemId} className="grid grid-cols-4 py-2 border-b border-gray-200">
             <div className="">
                 <div className="grid grid-cols-4">
                     <div className="hidden sm:flex sm:justify-end sm:mr-2 items-center">
@@ -179,38 +210,42 @@ const CartPageContent = () => {
                                     </div>
 
                                     <div className="col-span-4">
-                                    &#9745; Copy address to billing information
+                                        <button onClick={copyToBilling}>&#9745; Copy to billing address</button>
                                     </div>
 
-                                    <InputField name={"firstName"} value={cartState.firstName} setter={setter}
+                                    <InputField name={"firstName"} value={shippingInfo.firstName} setter={setter}
                                                 placeholder={"First Name"} required={true}
                                                 className="inputField col-span-4 md:col-span-2"/>
-                                    <InputField name={"lastName"} value={cartState.lastName} setter={setter}
+                                    <InputField name={"lastName"} value={shippingInfo.lastName} setter={setter}
                                                 placeholder={"Last Name"} required={true}
                                                 className="col-span-4 md:col-span-2 inputField" />
-                                    <InputField name={"email"} value={cartState.email} placeholder={"E-Mail"}
+                                    <InputField name={"email"} value={shippingInfo.email} placeholder={"E-Mail"}
                                                 setter={setter} required={true} type={"email"}
                                                 className="col-span-4 md:col-span-2 inputField" />
-                                    <InputField name={"phone"} value={cartState.phone} setter={setter}
+                                    <InputField name={"phone"} value={shippingInfo.phone} setter={setter}
                                                 placeholder={"Telephone"} required={true}
                                                 className="col-span-4 md:col-span-2 inputField" />
-                                    <InputField name={"address1"} value={cartState.address1} setter={setter}
+                                    <InputField name={"address1"} value={shippingInfo.address1} setter={setter}
                                                 placeholder={"Address 1"} required={true}
                                                 className="col-span-4 inputField" />
-                                    <InputField name={"address2"}  value={cartState.address2} setter={setter}
+                                    <InputField name={"address2"}  value={shippingInfo.address2} setter={setter}
                                         placeholder={"Address 2"} required={false}
                                         className="col-span-4 inputField" />
-                                    <InputField name={"city"} value={cartState.city} setter={setter}
+                                    <InputField name={"city"} value={shippingInfo.city} setter={setter}
                                                 placeholder={"City"}  required={true}
                                                 className="col-span-4 md:col-span-2 inputField" />
-                                    <InputField name={"state"} value={cartState.state} setter={setter}
+                                    <Combobox name={"state"} value={shippingInfo.state}
+                                              optionList={statesList}
+                                              freeText={false}
+                                              onChange={(e)=> {
+                                                  dispatch(updateShippingField({name: "state", value: e.target.valueId}))
+                                              }}
                                                 placeholder={"State"} required={true}
                                                 className="col-span-2 md:col-span-1 inputField" />
-                                    <InputField name={"zip"} value={cartState.zip} setter={setter}
+                                    <InputField name={"zip"} value={shippingInfo.zip} setter={setter}
                                                 placeholder={"Zip"} required={true}
                                                 className="col-span-2 md:col-span-1 inputField" />
-                                    
-                                </div> 
+                                </div>
                             </div>
 
 
@@ -219,38 +254,42 @@ const CartPageContent = () => {
         <div className="grid grid-cols-4 w-full gap-2  pl-2">
                                     <div className="col-span-4 centerAll font-bold py-5">
                                         BILLING INFORMATION
-
                                     </div>
 
                                     <div className="col-span-4">
-                                    &#9745; Ship to the same address
+                                        <button onClick={copyToShipping}>&#9745; Ship to the same address</button>
                                     </div>
 
-                                    <InputField name={"firstName"} value={cartState.firstName} setter={setter}
+                                    <InputField name={"firstName"} value={billingInfo.firstName} setter={setterBilling}
                                                 placeholder={"First Name"} required={true}
                                                 className="inputField col-span-4 md:col-span-2"/>
-                                    <InputField name={"lastName"} value={cartState.lastName} setter={setter}
+                                    <InputField name={"lastName"} value={billingInfo.lastName} setter={setterBilling}
                                                 placeholder={"Last Name"} required={true}
                                                 className="col-span-4 md:col-span-2 inputField" />
-                                    <InputField name={"email"} value={cartState.email} placeholder={"E-Mail"}
-                                                setter={setter} required={true} type={"email"}
+                                    <InputField name={"email"} value={billingInfo.email} placeholder={"E-Mail"}
+                                                setter={setterBilling} required={true} type={"email"}
                                                 className="col-span-4 md:col-span-2 inputField" />
-                                    <InputField name={"phone"} value={cartState.phone} setter={setter}
+                                    <InputField name={"phone"} value={billingInfo.phone} setter={setterBilling}
                                                 placeholder={"Telephone"} required={true}
                                                 className="col-span-4 md:col-span-2 inputField" />
-                                    <InputField name={"address1"} value={cartState.address1} setter={setter}
+                                    <InputField name={"address1"} value={billingInfo.address1} setter={setterBilling}
                                                 placeholder={"Address 1"} required={true}
                                                 className="col-span-4 inputField" />
-                                    <InputField name={"address2"}  value={cartState.address2} setter={setter}
+                                    <InputField name={"address2"}  value={billingInfo.address2} setter={setterBilling}
                                         placeholder={"Address 2"} required={false}
                                         className="col-span-4 inputField" />
-                                    <InputField name={"city"} value={cartState.city} setter={setter}
+                                    <InputField name={"city"} value={billingInfo.city} setter={setterBilling}
                                                 placeholder={"City"}  required={true}
                                                 className="col-span-4 md:col-span-2 inputField" />
-                                    <InputField name={"state"} value={cartState.state} setter={setter}
-                                                placeholder={"State"} required={true}
+                                    <Combobox name={"state"} value={billingInfo.state}
+                                              optionList={statesList}
+                                              freeText={false}
+                                              onChange={(e)=> {
+                                                  dispatch(updateBillingField({name: "state", value: e.target.valueId}))
+                                              }}
+                                                placeholder={"State"}
                                                 className="col-span-2 md:col-span-1 inputField" />
-                                    <InputField name={"zip"} value={cartState.zip} setter={setter}
+                                    <InputField name={"zip"} value={billingInfo.zip} setter={setterBilling}
                                                 placeholder={"Zip"} required={true}
                                                 className="col-span-2 md:col-span-1 inputField" />
                                     </div>
@@ -258,9 +297,18 @@ const CartPageContent = () => {
     </div>
 </div>
          <div className="centerAll py-10">
-            <button className=" w-72 bg-red-500 hover:bg-red-700 text-white p-5 font-bold rounded-full">
-            COMPLETE ORDER
-            </button>
+             <Paypal createOrder={submitOrder}
+                     onClick={(data, action) => {
+                         action.reject();
+                     }}
+
+             />
+            {/*<button className=" w-72 bg-red-500 hover:bg-red-700 text-white p-5 font-bold rounded-full"*/}
+            {/*        onClick={submitOrder}*/}
+            {/*>*/}
+
+            {/*COMPLETE ORDER*/}
+            {/*</button>*/}
         </div>
        
 

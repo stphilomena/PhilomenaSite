@@ -1,3 +1,8 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+
 module.exports = {
   siteMetadata: {
     title: `The National Shrine of Saint Philomena`,
@@ -30,6 +35,13 @@ module.exports = {
       },
     },*/
     `gatsby-plugin-gatsby-cloud`,
+      {
+      resolve: `gatsby-plugin-paypal`,
+      options: {
+        clientId: process.env.GATSBY_PAYPAL_CLIENT_ID,
+        currency: `USD`, // Optional
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
