@@ -133,7 +133,7 @@ exports.onCreateNode = async ({node, actions, store, getCache, createNodeId}) =>
 };
 
 function toNode(row, index) {
-    const node= Object.entries(row).reduce((obj, [key, cell]) => {
+    return Object.entries(row).reduce((obj, [key, cell]) => {
         if (key === undefined || key === "undefined") {
             return obj;
         }
@@ -149,5 +149,4 @@ function toNode(row, index) {
 
         return obj;
     }, {});
-    node["rowIndex"] = index;
 }
