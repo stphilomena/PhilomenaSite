@@ -13,19 +13,22 @@ const ProductDetailContent = ({product}) => (
 
         </div>
         </div>
-        <div class="text-xl w-full">
+        <div class="text-xl w-full space-y-4">
             <div className="text-2xl font-bold">{product.title}</div>
             <div className="text-gray-400">{product.description}</div> 
-            <div className="grid grid-cols-2">
-            <div>{product.option1Name}</div>
-            <div>{product.option2Name}</div>
+            <div className="flex">
+            <button className="border rounded-md px-5 py-2 hover:bg-gray-200"><div>{product.option1Name}</div></button>
+            <button className="hover:bg-gray-200"><div>{product.option2Name}</div></button>
             </div>
-            Price: {USD_P2(product.option1Price)}
-            <br />
+            <div className="text-red-500 font-bold">Price: {USD_P2(product.option1Price)}</div>
+            <div>
             Quantity:
-            
-            <br />
+            </div>
+            <div className="py-10">
+            <button className="bg-red-600 py-5 px-10 text-white hover:bg-red-700">
             Add To Cart
+            </button>
+            </div>
         </div>
     </div>
     
