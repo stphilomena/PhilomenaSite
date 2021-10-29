@@ -105,8 +105,7 @@ const HomeContent = () => {
                                     <button
                                         className="absolute mb-0 inset-x-0 bottom-0 w-full bg-red-600  p-3 text-white hover:bg-red-800"
                                         onClick={() => onAddToCart(item)}
-                                    >ADD
-                                        TO CART
+                                    >ADD TO CART
                                     </button>
                                 </div>
                             ))

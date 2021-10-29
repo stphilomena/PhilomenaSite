@@ -43,11 +43,17 @@ const Card = ({item}) => {
             </section>
 
             <section className="grid grid-rows-3">
-                <div className="centerAll font-light text-sm font-bold w-full">
+                <div className="centerAll  text-sm font-bold w-full">
                     <h4>{item.title}</h4>
                 </div>
-                <div className="text-gray-500 centerAll ">
+                <div className="grid grid-cols-2 gap-1">
+                <button className="hover:bg-gray-200"><div className="text-gray-500 centerAll ">
                     {item.option1Name}
+                </div></button>
+                <button className="hover:bg-gray-200"><div className="text-gray-500 centerAll ">
+                    {item.option2Name}
+                </div>
+                </button>
                 </div>
                 <div>
                     <p className="text-red-500 font-bold text-xl py-2">PRICE: &nbsp;
