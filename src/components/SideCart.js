@@ -21,9 +21,9 @@ const SideCart = () => {
     }, [firstRender, cartLength, cartTotal])
 
     return (
-        <div className={"fixed top-10 right-0 w-96 pointer-events-none"}>
+        <div className={"fixed top-10 right-0 w-96"}>
             <div
-                className={"flex relative bg-white w-80 shadow-xl transition-all duration-300 ease-in " + (!expanded ? "-right-80 ml-16" : "-right-16")}>
+                className={"pointer-events-none flex relative bg-white w-80 shadow-xl transition-all duration-300 ease-in " + (!expanded ? "-right-80 ml-16" : "-right-16")}>
                 <div id="cartButton"
                      className="relative -ml-16 w-16 h-16 bg-red-500 right-0 centerAll rounded-l-xl z-40">
                     <img className="h-10" src={CartLogo} alt="National Shrine of Saint Philomena Shopping Cart"
