@@ -1,6 +1,5 @@
 import * as React from "react"
 import {Link} from "gatsby";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const NewMenu = () => (
     <div className="bg-gray-200 border-b-2 border-gray-400">
@@ -21,7 +20,7 @@ const NewMenu = () => (
 
                             </div>
                             <div className="px-4">	&#x1f6d2;</div>
-                            <FontAwesomeIcon icon={faCoffee} />
+                            <svg className="icon icon-menu h-7"><use xlinkHref="#icon-menu"></use></svg><span className="name"> icon-menu</span>
                         </div>
                     </div>
         </div>
