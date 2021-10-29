@@ -56,10 +56,16 @@ export const cartSlice = createSlice({
             state.shipping = computeShipping(state.total)
             state.tax = computeTax(state.total, state.tax, state.tax_rate, state.tax_shipping)
         },
+        clearCart: (state, action) => {
+            state.products = []
+            state.total = computeTotal(state)
+            state.shipping = computeShipping(state.total)
+            state.tax = computeTax(state.total, state.tax, state.tax_rate, state.tax_shipping)
+        }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addProduct, removeProduct, updateTax } = cartSlice.actions
+export const { addProduct, removeProduct, updateTax, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer

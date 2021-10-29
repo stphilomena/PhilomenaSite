@@ -5,9 +5,9 @@ const computeTax = (total, shipping, tax_rate, tax_shipping) => {
     return ((total + (tax_shipping?shipping:0)) * tax_rate).toFixed(2)
 }
 const getTaxRate = (state, zip, address1, address2) => {
-    if(state === 'FL') {
-        return {tax_rate: 0.07, tax_shipping:false};
-    }
+    // if(state === 'FL') {
+    //     return {tax_rate: 0.07, tax_shipping:false};
+    // }
     return {tax_rate: 0, tax_shipping: false};
 }
 const computeShipping = (total) => {

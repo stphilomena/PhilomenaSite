@@ -7,6 +7,8 @@ const payPalClient = require('../common/paypalClient');
 const {BackendError} = require("../common/errors")
 const {computeShipping, computeTotal, computeTax} = require("../common/checkout");
 const credentials = require('../../philomena-site-93dddf35c845.json')
+const { URLSearchParams } = require('url');
+const fetch = require('node-fetch');
 
 const validateOrder = (checkout) => {
     const rules = {
@@ -30,7 +32,7 @@ const validateOrder = (checkout) => {
     v2.passes();
 
     if (!v1.passes() || !v2.passes()) {
-        throw new BackendError('Validation failed', 400, {errors: {shipping: v1.getErrors(), billing: v2.getErrors()}});
+        throw new BackendError('Billing or shipping address is incorrect.', 400, {errors: {shipping: v1.getErrors(), billing: v2.getErrors()}});
         // throw new BackendError('Validation failed', 400, {errors: validation.errors.all()});
     }
 }
@@ -109,7 +111,7 @@ const validateProducts = async (checkout) => {
         console.log('Calc total', cartTotal, parseFloat(shopItem.option1Price), qty);
     })
     if (errors.length > 0) {
-        throw new BackendError('Some items from the cart have errors', 400, {errors});
+        throw new BackendError('Some items from the cart have errors', 400, {errors: {cart: errors}});
     }
     return {cartTotal, items};
 }
@@ -194,6 +196,68 @@ export default async function handler(req, res) {
           return res.send(500);
         }
 
+        // Save to klaviyo
+        try {
+            const encodedParams = new URLSearchParams();
+            const eventInfo = {
+                token: process.env.KLAVIYO_PUBLIC_KEY,
+                event: "Ordered Products",
+                customer_properties: {
+                    "$email": checkout.billing.email,
+                    "$first_name": checkout.billing.firstName,
+                    "$last_name": checkout.billing.lastName,
+                    "$city": checkout.billing.city,
+                    "$region": checkout.billing.state,
+                    "$country": "US",
+                    "$zip": checkout.billing.zip
+                },
+                properties: {
+                    "$value": total.toString(),
+                    amount: {
+                        value: total.toString(),
+                        currency_code: 'USD',
+                        breakdown: {
+                            item_total: {value: cartTotal.toString(), currency_code: 'USD'},
+                            tax_total: {value: tax, currency_code: 'USD'},
+                            shipping: {value: shipping, currency_code: 'USD'}
+                        },
+                    },
+                    items: checkout.cart.map(item => {
+                        return {
+                            name: items[item.itemId].title + ' ' + items[item.itemId].option1Name,
+                            sku: item.itemId,
+                            unit_amount: {"currency_code": "USD", value: item.price},
+                            quantity: item.qty
+                        }
+                    }),
+                    shipping: {
+                        method: "Shipping",
+                        name: {full_name: checkout.shipping.firstName + ' ' + checkout.shipping.lastName},
+                        address: {
+                            address_line_1: checkout.shipping.address1,
+                            address_line_2: checkout.shipping.address2,
+                            admin_area_2: checkout.shipping.city,
+                            admin_area_1: checkout.shipping.state,
+                            postal_code: checkout.shipping.zip,
+                            country_code: 'US'
+                        }
+                    }
+                }
+            }
+            encodedParams.set('data', JSON.stringify(eventInfo));
+            const url = 'https://a.klaviyo.com/api/track';
+            const options = {
+                method: 'POST',
+                headers: {Accept: 'text/html', 'Content-Type': 'application/x-www-form-urlencoded'},
+                body: encodedParams
+            };
+            fetch(url, options)
+                .then(res => res.json())
+                .then(json => console.log(json))
+                .catch(err => console.error('error:' + err));
+        } catch {
+
+        }
         // res.status(200).json({cartTotal, items, checkout, order});
         res.status(200).json({orderID: order.result.id,
             links: order.result.links
