@@ -192,8 +192,7 @@ export default async function handler(req, res) {
           order = await payPalClient.client().execute(request);
         } catch (err) {
           // 4. Handle any errors from the call
-          console.error(err);
-          return res.send(500);
+            res.status(500).json({message: err.message});
         }
 
         // Save to klaviyo
