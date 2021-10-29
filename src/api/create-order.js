@@ -251,18 +251,12 @@ export default async function handler(req, res) {
                 headers: {Accept: 'text/html', 'Content-Type': 'application/x-www-form-urlencoded'},
                 body: encodedParams
             };
-            fetch(url, options)
-                .then(res => res.json())
-                .then(json => console.log(json))
-                .catch(err => console.error('error:' + err));
+            await fetch(url, options);
         } catch {
 
         }
         // res.status(200).json({cartTotal, items, checkout, order});
-        res.status(200).json({orderID: order.result.id,
-            links: order.result.links
-
-        });
+        res.status(200).json({orderID: order.result.id, links: order.result.links});
     } catch(e) {
         if(e instanceof BackendError) {
             res.status(e.code||500).json({...e.details, message: e.message, checkout});

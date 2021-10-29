@@ -19,7 +19,7 @@
     "gatsby-plugin-image": "^1.11.0",
     "gatsby-plugin-manifest": "^3.6.0",
     "gatsby-plugin-offline": "^4.6.0",
-    "gatsby-plugin-paypal": "^1.1.6",
+    "gatsby-plugin-paypal": "gall314/gatsby-plugin-paypal",
     "gatsby-plugin-react-helmet": "^4.6.0",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.12.0",

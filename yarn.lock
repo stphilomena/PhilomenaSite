@@ -6129,10 +6129,9 @@ gatsby-plugin-page-creator@^3.11.0:
     globby "^11.0.3"
     lodash "^4.17.21"
 
-gatsby-plugin-paypal@^1.1.6:
+gatsby-plugin-paypal@gall314/gatsby-plugin-paypal:
   version "1.1.6"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-paypal/-/gatsby-plugin-paypal-1.1.6.tgz#8b9ce8516cd596b9fd552261b76324d4dc7571a9"
-  integrity sha512-oGfC+gHl8FAY1JEuL3MK9CENHEWgWRCH6X01da/VxVI02Vi2YqAmv+B66L9ynPeXa4b+6ZEo2MUrGGrZ2NOyOw==
+  resolved "https://codeload.github.com/gall314/gatsby-plugin-paypal/tar.gz/838a75502e050dc0e2499833f4db85cf239f36e6"
   dependencies:
     "@babel/runtime" "^7.15.4"
     prop-types "^15.7.2"
