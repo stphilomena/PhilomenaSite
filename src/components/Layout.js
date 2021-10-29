@@ -8,8 +8,8 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
-import Footer from "./Footer"
-import SideCart from "./SideCart";
+import Footer from "./Footer";
+// import SideCart from "./SideCart";
 
 const Layout = ({ children, noCart }) => {
   // const data = useStaticQuery(graphql`
@@ -25,7 +25,6 @@ const Layout = ({ children, noCart }) => {
   return (
     <>
       <main className={'w-screen overflow-hidden'}>{children}</main>
-        {noCart?"": <SideCart/>}
         <Footer/>
     </>
   )
