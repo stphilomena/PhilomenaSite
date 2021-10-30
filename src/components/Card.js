@@ -32,6 +32,7 @@ const Card = ({item}) => {
     }))
 
     return (
+
         <div className="bg-white w-60 relative group">
 
             <section className="bg-white h-60 centerAll">

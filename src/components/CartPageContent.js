@@ -64,10 +64,11 @@ const CartPageContent = () => {
     });
     const onError = (e) => {
         console.log('Error!', e)
-        setErrors({
-            message: JSON.stringify(e),
-            title: 'PAYMENT ERROR',
-        });
+        // setErrors({
+        //     message: JSON.stringify(e),
+        //     title: 'PAYMENT ERROR',
+        // });
+
     }
     const onSuccess = () => {
         console.log('Success!')
@@ -94,6 +95,8 @@ const CartPageContent = () => {
                         title: 'ORDER VALIDATION ERROR',
                         ...data.errors
                     });
+                } else {
+                   setErrors({});
                 }
                 return data.orderID;
             })
