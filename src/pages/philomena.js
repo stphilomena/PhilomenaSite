@@ -11,8 +11,8 @@ const Philomena = () => (
   <Layout>
     
     <Seo title="About Saint Philomena | National Shrine of Saint Philomena" />
-    <Menu/>
     <PhilomenaHeader/>
+    <Menu/>
     <PhilomenaContent/>
  
   </Layout>
