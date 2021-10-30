@@ -54,10 +54,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store
     const filterNode = (node) => node.itemId;
     const mapNode = node => node;
     const spreadsheetName = 'Inventory';
-
-    await updateProductsQty();
-
-
+    const spreadsheetId = '1wyRPydG-zHdvJLPYAbQnp6oIAZ6WlZbetDz_ApbkcQI';
     const IMAGE_FOLDER = '1w3-CRBAssjTOCj2qRK1YlURaxJQiASnW';
     const googleDriveInstance = new NodeGoogleDrive({ROOT_FOLDER: IMAGE_FOLDER});
     let gdrive = await googleDriveInstance.useServiceAccountAuth(credentials);
