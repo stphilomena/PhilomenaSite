@@ -29,8 +29,8 @@ const Footer = () => (
                     4580 SW 65th Avenue<br/>
                     Davie, FL 33314
                     <br/>
-                    Tel: (305) 317-2331<br/>
-                    <a className="footerLink" href="mailto:123@email.com">E-Mail: 123@email.com</a>
+                    Tel: (954) 998-2848<br/>
+                    <a className="footerLink" href="shrineofphilomena@gmail.com">E-Mail: shrineofphilomena@gmail.com</a>
                 </div>
             </div>
         </div>
