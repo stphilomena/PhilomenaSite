@@ -12,7 +12,7 @@ const Shop = () => {
       const { inventory } = useStaticQuery(
       graphql`
           query InventoryQuery {
-              inventory: allGoogleSpreadsheetInventoryInventory(sort: {fields: id, order: DESC}) {
+              inventory: allGoogleSpreadsheetInventoryInventory(sort: {fields: itemId, order: DESC}) {
                   nodes {
                       category
                       description
@@ -43,7 +43,7 @@ const Shop = () => {
 
     return (
         <Layout>
-            <Seo title="Schedule the Visit | National Shrine of Saint Philomena"/>
+            <Seo title="Shop Devotional Items | National Shrine of Saint Philomena"/>
             <HomeHeader/>
             <Menu/>
             <div className="centerAll py-10">
