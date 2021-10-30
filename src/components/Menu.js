@@ -5,7 +5,7 @@ import newMenuLogo from '../images/saint_philomena_shrine_logo_red.svg';
 import {useSelector} from 'react-redux';
 import { BsList, BsCart3 } from "react-icons/bs";
 
-const NewMenu = () => {
+const Menu = () => {
     
     const cartLength = useSelector((state) => state.cart.products.length)
 
@@ -48,4 +48,4 @@ const NewMenu = () => {
     
     )
 }
-    export default NewMenu
+    export default Menu
