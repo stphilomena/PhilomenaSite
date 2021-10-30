@@ -22,7 +22,7 @@ export const cartSlice = createSlice({
             state.tax_shipping = tax_shipping;
         },
         addProduct: (state, action) => {
-            const {itemId, price, title, image, url, qty, availQty} = action.payload
+            const {itemId, price, title, image, url, qty, availQty, noShipping} = action.payload
             const index = state.products.findIndex((product) => product.itemId === itemId)
             if(index === -1) {
                 state.products.push({
@@ -31,13 +31,15 @@ export const cartSlice = createSlice({
                     title: title,
                     image: image,
                     url: url,
-                    qty: Math.min(availQty || qty || 1, qty || 1)})
+                    qty: Math.min(availQty || qty || 1, qty || 1),
+                    noShipping: noShipping
+                })
             } else {
                 const product = state.products[index]
                 state.products[index].qty = availQty ? Math.min(availQty, product.qty + (qty||1)) : product.qty + (qty||1)
             }
             state.total = computeTotal(state)
-            state.shipping = computeShipping(state.total)
+            state.shipping = state.products.some(prod => (prod.noShipping||"0").toString() !=="1") ? computeShipping(state.total): 0;
             state.tax = computeTax(state.total, state.shipping, state.tax_rate, state.tax_shipping)
         },
         removeProduct: (state, action) => {
@@ -53,13 +55,15 @@ export const cartSlice = createSlice({
                 state.products.splice(index, 1)
             }
             state.total = computeTotal(state)
-            state.shipping = computeShipping(state.total)
+            // state.shipping = computeShipping(state.total)
+            state.shipping = state.products.some(prod => (prod.noShipping||"0").toString() !=="1") ? computeShipping(state.total): 0;
             state.tax = computeTax(state.total, state.tax, state.tax_rate, state.tax_shipping)
         },
         clearCart: (state, action) => {
             state.products = []
             state.total = computeTotal(state)
-            state.shipping = computeShipping(state.total)
+            // state.shipping = computeShipping(state.total)
+            state.shipping = 0;
             state.tax = computeTax(state.total, state.tax, state.tax_rate, state.tax_shipping)
         }
     },

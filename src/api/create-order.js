@@ -151,9 +151,9 @@ export default async function handler(req, res) {
     try {
         validateOrder(checkout);
         const {cartTotal, items} = await validateProducts(checkout);
-        let shipping = computeShipping(cartTotal);
+        let shipping = checkout.cart.some(prod => (prod.shopItem.noShipping||"0") !== "1") ? computeShipping(cartTotal) : 0;
         // TODO: determine tax rate and shipping rate
-        let tax = computeTax(cartTotal, shipping, 0.07, false);
+        let tax = computeTax(cartTotal, shipping, 0.00, false);
 
         let total = parseFloat(cartTotal) + parseFloat(shipping) + parseFloat(tax);
         if(isNaN(total) || total < cartTotal || total < 0) {
@@ -199,7 +199,7 @@ export default async function handler(req, res) {
                         }
                     }),
                     shipping: {
-                        method: "Shipping",
+                        method: shipping === 0? "Digital Delivery" : "Shipping",
                         name: {
                             full_name: checkout.shipping.firstName + ' ' + checkout.shipping.lastName
                         },
