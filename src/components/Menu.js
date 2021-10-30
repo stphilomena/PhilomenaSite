@@ -13,7 +13,7 @@ const NewMenu = () => {
     return (
     
     <div>
-    <div className="bg-gray-200 border-b-2 border-gray-400 w-screen centerAll h-10 py-5">
+    <div className="bg-gray-200  border-b-2 border-gray-400 w-screen centerAll h-10 py-5">
         <div className="w-10/12 flex justify-between">
         
         <div className="mt-2 md:hidden relative block">
