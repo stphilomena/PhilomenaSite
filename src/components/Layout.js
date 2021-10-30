@@ -24,6 +24,11 @@ const Layout = ({ children, noCart }) => {
   //
   return (
     <>
+<script
+  async type="text/javascript"
+  src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=WuiJJG"
+></script>
+
     <svg aria-hidden="true" style={{"position": "absolute", width: 0, height: 0, overflow: "hidden"}} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="icon-menu" viewBox="0 0 32 32">
@@ -31,6 +36,8 @@ const Layout = ({ children, noCart }) => {
 </symbol>
 </defs>
 </svg>
+
+
 
       <main className={'w-screen overflow-hidden'}>{children}</main>
         <Footer/>
