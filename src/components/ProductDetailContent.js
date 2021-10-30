@@ -5,7 +5,7 @@ import {USD_P2} from "../helpers/NumberHelper";
 const ProductDetailContent = ({product}) => (
  
 <div className="centerAll"> 
-<div className="w-10/12">
+<div className="w-10/12 py-10">
 <div class="grid grid-cols-1 md:grid-cols-2 p-5 gap-5">
         <div class="w-full centerAll">      
         <div>
@@ -31,13 +31,7 @@ const ProductDetailContent = ({product}) => (
             </div>
         </div>
     </div>
-    
-<div class="centerAll">
-    OTHER PRODUCTS:
-    <br />
-    CARDS CAROUSEL
-</div>
-</div>
+    </div>
 </div>
 )
 
