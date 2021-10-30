@@ -12,7 +12,7 @@ const Shop = () => {
       const { inventory } = useStaticQuery(
       graphql`
           query InventoryQuery {
-              inventory: allGoogleSpreadsheetInventoryInventory(sort: {fields: id, order: DESC}) {
+              inventory: allGoogleSpreadsheetInventoryInventory(sort: {fields: itemId, order: DESC}) {
                   nodes {
                       category
                       description
