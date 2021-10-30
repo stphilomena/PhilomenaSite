@@ -24,10 +24,8 @@ const Layout = ({ children, noCart }) => {
   //
   return (
     <>
-<script
-  async type="text/javascript"
-  src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=WuiJJG"
-></script>
+        <script async type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=WuiJJG" />
+        <script src="https://www.paypal.com/sdk/js?client-id=ASQwqDlBG6cxCWAynbTjbRevQVD7Ihunm4ivgbOF6TUgGIgjtgrVrAiF7CayL3tdnnw6_F8FcRGwlQgL" />
 
     <svg aria-hidden="true" style={{"position": "absolute", width: 0, height: 0, overflow: "hidden"}} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 <defs>

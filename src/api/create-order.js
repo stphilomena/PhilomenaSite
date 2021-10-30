@@ -224,7 +224,7 @@ export default async function handler(req, res) {
             res.status(500).json({message: err.message});
         }
         // Update QTY
-        await updateProductsQty(checkout.cart);
+        // await updateProductsQty(checkout.cart);
 
         // Save to klaviyo
         try {
