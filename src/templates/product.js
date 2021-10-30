@@ -47,6 +47,7 @@ query($id: Date) {
                 }
                 title
                 description
+      noShipping
   }
 }
 `

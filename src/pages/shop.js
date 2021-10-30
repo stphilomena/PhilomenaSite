@@ -27,6 +27,7 @@ const Shop = () => {
                       option1Quantity
                       option1Price
                       option1Name
+                      noShipping
                       image {
                           childImageSharp {
                               gatsbyImageData(placeholder: BLURRED)
