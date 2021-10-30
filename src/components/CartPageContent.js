@@ -62,7 +62,15 @@ const CartPageContent = () => {
             }
         }
     });
+    const onError = (e) => {
+        console.log('Error!', e)
+        setErrors({
+            message: JSON.stringify(e),
+            title: 'PAYMENT ERROR',
+        });
+    }
     const onSuccess = () => {
+        console.log('Success!')
         dispatch(clearCart())
         window.location = '/CartPageContentSuccessful'
     }
@@ -353,7 +361,7 @@ const CartPageContent = () => {
                 {/*COMPLETE ORDER*/}
                 {/*</button>*/}
                 <Paypal createOrder={submitOrder}
-
+                        onError={onError}
                         onSuccess={onSuccess}
                 />
             </div>

@@ -27,7 +27,8 @@ const Card = ({item}) => {
         name: item.option1Name,
         price: item.option1Price,
         qty,
-        availQty: item.option1Quantity
+        availQty: item.option1Quantity,
+        noShipping: item.noShipping
     }))
 
     return (

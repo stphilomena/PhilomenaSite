@@ -29,6 +29,7 @@ const HomeContent = () => {
                 option2Name
                 option2Price
                 option2Quantity
+                noShipping
                 image {
                   childImageSharp {
                     gatsbyImageData(placeholder: BLURRED)
@@ -52,7 +53,8 @@ const HomeContent = () => {
         name: item.option1Name,
         price: item.option1Price,
         qty: 1,
-        availQty: item.option1Quantity
+        availQty: item.option1Quantity,
+        noShipping: item.noShipping
     }))
 
     return (
