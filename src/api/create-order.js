@@ -192,8 +192,7 @@ export default async function handler(req, res) {
           order = await payPalClient.client().execute(request);
         } catch (err) {
           // 4. Handle any errors from the call
-          console.error(err);
-          return res.send(500);
+            res.status(500).json({message: err.message});
         }
 
         // Save to klaviyo
@@ -251,18 +250,12 @@ export default async function handler(req, res) {
                 headers: {Accept: 'text/html', 'Content-Type': 'application/x-www-form-urlencoded'},
                 body: encodedParams
             };
-            fetch(url, options)
-                .then(res => res.json())
-                .then(json => console.log(json))
-                .catch(err => console.error('error:' + err));
+            await fetch(url, options);
         } catch {
 
         }
         // res.status(200).json({cartTotal, items, checkout, order});
-        res.status(200).json({orderID: order.result.id,
-            links: order.result.links
-
-        });
+        res.status(200).json({orderID: order.result.id, links: order.result.links});
     } catch(e) {
         if(e instanceof BackendError) {
             res.status(e.code||500).json({...e.details, message: e.message, checkout});

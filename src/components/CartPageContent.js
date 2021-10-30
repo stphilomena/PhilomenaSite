@@ -89,7 +89,10 @@ const CartPageContent = () => {
                 }
                 return data.orderID;
             })
-            .catch(err => {console.log(err)});
+            .catch(err => {
+                setProcessing(false);
+                console.log(err)
+            });
     }
 
     const shipping = useSelector((state) => state.cart.shipping)

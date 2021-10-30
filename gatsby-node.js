@@ -132,7 +132,7 @@ exports.onCreateNode = async ({node, actions, store, getCache, createNodeId}) =>
     }
 };
 
-function toNode(row) {
+function toNode(row, index) {
     return Object.entries(row).reduce((obj, [key, cell]) => {
         if (key === undefined || key === "undefined") {
             return obj;
