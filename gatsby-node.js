@@ -15,6 +15,7 @@ const { createRemoteFileNode, createFileNodeFromBuffer } = require('gatsby-sourc
 const fs = require('fs');
 const path = require('path');
 const slug = require('slug')
+const google = require('googleapis');
 
 exports.createPages = async({graphql, actions}) => {
 
@@ -50,10 +51,11 @@ query {
 exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store, getCache }) => {
     const {createNode} = actions;
     const typePrefix = "GoogleSpreadsheet";
-    const filterNode = () => true;
+    const filterNode = (node) => node.itemId;
     const mapNode = node => node;
-    const spreadsheetId = '1wyRPydG-zHdvJLPYAbQnp6oIAZ6WlZbetDz_ApbkcQI';
     const spreadsheetName = 'Inventory';
+
+    await updateProductsQty();
 
 
     const IMAGE_FOLDER = '1w3-CRBAssjTOCj2qRK1YlURaxJQiASnW';
@@ -133,7 +135,7 @@ exports.onCreateNode = async ({node, actions, store, getCache, createNodeId}) =>
 };
 
 function toNode(row, index) {
-    return Object.entries(row).reduce((obj, [key, cell]) => {
+    let node = Object.entries(row).reduce((obj, [key, cell]) => {
         if (key === undefined || key === "undefined") {
             return obj;
         }
@@ -149,4 +151,6 @@ function toNode(row, index) {
 
         return obj;
     }, {});
+    node["rowIndex"] = index;
+    return node;
 }

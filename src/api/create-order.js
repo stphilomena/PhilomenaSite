@@ -9,6 +9,31 @@ const {computeShipping, computeTotal, computeTax} = require("../common/checkout"
 const credentials = require('../../philomena-site-93dddf35c845.json')
 const { URLSearchParams } = require('url');
 const fetch = require('node-fetch');
+const google = require('googleapis');
+const spreadsheetId = '1wyRPydG-zHdvJLPYAbQnp6oIAZ6WlZbetDz_ApbkcQI';
+
+const updateProductsQty = async (cart) => {
+    try {
+        let jwtClient = new google.Auth.JWT(credentials.client_email, null, credentials.private_key, ['https://www.googleapis.com/auth/spreadsheets']);
+
+        await jwtClient.authorize()
+        let sheetName = 'Inventory!'
+        let sheets = new google.sheets_v4.Sheets();
+        for(let i = 0; i < cart.length; ++i) {
+            await sheets.spreadsheets.values.update({
+                auth: jwtClient,
+                spreadsheetId: spreadsheetId,
+                valueInputOption: "USER_ENTERED",
+                range: sheetName+cart[i].shopItem.qtyCell,
+                resource: {
+                    values: [[parseInt(cart[i].shopItem.option1Quantity) - parseInt(cart[i].qty)]]
+                }
+            });
+        }
+    } catch {
+    }
+}
+
 
 const validateOrder = (checkout) => {
     const rules = {
@@ -37,8 +62,8 @@ const validateOrder = (checkout) => {
     }
 }
 
-const toNode = (row)=> {
-    return Object.entries(row).reduce((obj, [key, cell]) => {
+const toNode = (row, index)=> {
+    let node = Object.entries(row).reduce((obj, [key, cell]) => {
         if (key === undefined || key === "undefined") {
             return obj;
         }
@@ -54,10 +79,11 @@ const toNode = (row)=> {
 
         return obj;
     }, {});
+    node['qtyCell'] = `F${index+2}:F${index+2}`;
+    return node;
 }
 
 const getProductsInfo = async (itemIds) => {
-    const spreadsheetId = '1wyRPydG-zHdvJLPYAbQnp6oIAZ6WlZbetDz_ApbkcQI';
     const sheets = new Sheets(spreadsheetId);
     const spreadsheetName = 'Inventory';
     if (credentials) {
@@ -107,6 +133,7 @@ const validateProducts = async (checkout) => {
         }
         checkout.cart[index].price = parseFloat(shopItem.option1Price);
         checkout.cart[index].id = shopItem.itemId;
+        checkout.cart[index].shopItem = shopItem;
         cartTotal += parseFloat(shopItem.option1Price) * qty;
         console.log('Calc total', cartTotal, parseFloat(shopItem.option1Price), qty);
     })
@@ -115,6 +142,8 @@ const validateProducts = async (checkout) => {
     }
     return {cartTotal, items};
 }
+
+
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -194,6 +223,8 @@ export default async function handler(req, res) {
           // 4. Handle any errors from the call
             res.status(500).json({message: err.message});
         }
+        // Update QTY
+        await updateProductsQty(checkout.cart);
 
         // Save to klaviyo
         try {

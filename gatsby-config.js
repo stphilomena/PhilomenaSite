@@ -38,7 +38,7 @@ module.exports = {
       {
       resolve: `gatsby-plugin-paypal`,
       options: {
-        clientId: 'GATSBY_PAYPAL_CLIENT_ID=ASQwqDlBG6cxCWAynbTjbRevQVD7Ihunm4ivgbOF6TUgGIgjtgrVrAiF7CayL3tdnnw6_F8FcRGwlQgL',
+        clientId: 'ASQwqDlBG6cxCWAynbTjbRevQVD7Ihunm4ivgbOF6TUgGIgjtgrVrAiF7CayL3tdnnw6_F8FcRGwlQgL',
         currency: `USD`, // Optional
       }
     }
