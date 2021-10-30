@@ -25,11 +25,7 @@ function client() {
 function environment() {
     let clientId = process.env.PAYPAL_CLIENT_ID || 'PAYPAL-SANDBOX-CLIENT-ID';
     let clientSecret = process.env.PAYPAL_SECRET || 'PAYPAL-SANDBOX-CLIENT-SECRET';
-
-    console.log(clientId, clientSecret);
-    return new checkoutNodeJssdk.core.SandboxEnvironment(
-        clientId, clientSecret
-    );
+    return new checkoutNodeJssdk.core.LiveEnvironment(clientId, clientSecret);
 }
 
 async function prettyPrint(jsonData, pre=""){
