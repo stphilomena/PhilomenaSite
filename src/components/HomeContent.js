@@ -129,7 +129,7 @@ const HomeContent = () => {
    <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
     <div className="pt-10">
      <div className="centerAll w-11/12">
-     <StaticImage className="centerAll w-2/3 md:w-5/6 lg:w-2/3" src="../images/Our_lady_of_victory_crop.png" alt="Our Lady of Victory in Davie Florida" />
+     <StaticImage className="centerAll w-2/3 md:w-5/6 lg:w-2/3" src="../images/our_lady_of_victory_chapel.png" alt="Our Lady of Victory in Davie Florida" />
      </div>
     </div>
     
