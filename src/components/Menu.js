@@ -33,8 +33,7 @@ const NewMenu = () => {
         </div>
         <div className=" flex">
             <ul className="hidden md:flex ">
-            <li><div className="menuLink3 hidden lg:block"><Link to="/">Home</Link></div></li>
-             <li><Link to="/"><div className="menuLink3">Home</div></Link></li>
+            <li><Link to="/"><div className="menuLink3 hidden lg:block">Home</div></Link></li>
             <li><Link to="/philomena"><div className="menuLink3">St Philomena</div></Link></li>
             <li><Link to="/shop"><div className="menuLink3">Shop</div></Link></li>
             <li><Link to="/about"><div className="menuLink3">About Us</div></Link></li>
