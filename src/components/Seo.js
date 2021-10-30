@@ -80,6 +80,8 @@ Seo.defaultProps = {
   description: ``,
 }
 
+
+
 Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
