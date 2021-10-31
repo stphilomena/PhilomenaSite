@@ -1,10 +1,19 @@
+import {initCart} from "./cart";
+import {initCheckout} from "./checkout";
+
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('state');
         if(serializedState === null) {
             return undefined;
         }
-        return JSON.parse(serializedState)
+        const deserialized = JSON.parse(serializedState)
+
+        return {
+            cart: initCart,
+            checkout: initCheckout,
+            ...deserialized
+        };
     } catch(err) {
         return undefined;
     }
