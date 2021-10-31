@@ -49,9 +49,9 @@ const Card = ({item}) => {
                     <h4>{item.title}</h4>
                 </div>
                 <div className="">
-                <button className="hover:bg-gray-200"><div className="text-gray-500 centerAll ">
+                <div className="text-gray-500 centerAll ">
                     {item.option1Name}
-                </div></button>
+                </div>
                 
                 </div>
                 <div>
