@@ -30,6 +30,7 @@ Land was acquired with initial fund raising in January 2021. This land will be u
 <button className="border-l-2 border-red-500 text-left pl-10 bg-gray-100 hover:bg-gray-200 text-black py-5 w-full uppercase tracking-wider">
 LEARN ABOUT FOUNDATIONAL MASSES
 </button>
+<div className="py-10"></div>
 </div>
  </div>
     </div>
