@@ -11,10 +11,12 @@ export const loadState = () => {
         const deserializedCart = deserialized.cart || {};
         const deserializedCheckout = deserialized.checkout || {};
 
-        return {
+        const state = {
             cart: {initCart, ...deserializedCart},
             checkout: {initCheckout, ...deserializedCheckout}
         };
+        console.log('loaded state', state)
+        return state;
     } catch(err) {
         return undefined;
     }
