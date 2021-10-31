@@ -12,8 +12,8 @@ export const loadState = () => {
         const deserializedCheckout = deserialized.checkout || {};
 
         const state = {
-            cart: {initCart, ...deserializedCart},
-            checkout: {initCheckout, ...deserializedCheckout}
+            cart: {...initCart, ...deserializedCart},
+            checkout: {...initCheckout, ...deserializedCheckout}
         };
         console.log('loaded state', state)
         return state;
