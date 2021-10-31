@@ -30,7 +30,7 @@ const Footer = () => (
                     Davie, FL 33314
                     <br/>
                     Tel: (954) 998-2848<br/>
-                    <a className="footerLink" href="shrineofphilomena@gmail.com">E-Mail: shrineofphilomena@gmail.com</a>
+                    <a className="footerLink" href="friendsofstphilomena@gmail.com">E-Mail: friendsofstphilomena@gmail.com</a>
                 </div>
             </div>
         </div>

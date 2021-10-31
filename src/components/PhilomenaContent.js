@@ -164,7 +164,7 @@ const PhilomenaContent = () => (
                 <h4>Feast Days of St. Philomena</h4>
             <strong>January 10th</strong>:<strong> </strong>Birthday of the Saint Philomena
             <br/>
-            <strong>Sunday after January 10th</strong>: Patronage day of Saint Philomena
+            <strong>Sunday Closest to January 10th</strong>: Patronage day of Saint Philomena
             <br/>
             <strong>May 25th</strong>: Celebration of the finding of the Holy Body of Saint Philomena
             <br/>
@@ -175,7 +175,6 @@ const PhilomenaContent = () => (
             <br/>
             <strong>August 13th</strong>: Celebration of the name of Santa Filumena (Saint Philomena)
             <br/>
-            <strong>Second Sunday of August</strong>: Solemn festivities in honor of Saint Philomena
             <br/><br/><br/>
                     </div>
                 </div>
