@@ -8,11 +8,12 @@ export const loadState = () => {
             return undefined;
         }
         const deserialized = JSON.parse(serializedState)
+        const deserializedCart = deserialized.cart || {};
+        const deserializedCheckout = deserialized.checkout || {};
 
         return {
-            cart: initCart,
-            checkout: initCheckout,
-            ...deserialized
+            cart: {initCart, ...deserializedCart},
+            checkout: {initCheckout, ...deserializedCheckout}
         };
     } catch(err) {
         return undefined;
