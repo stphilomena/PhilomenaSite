@@ -57,7 +57,7 @@ const validateOrder = (checkout) => {
     v2.passes();
 
     if (!v1.passes() || !v2.passes()) {
-        throw new BackendError('Billing or shipping address is incorrect.', 400, {errors: {shipping: v1.getErrors(), billing: v2.getErrors()}});
+        throw new BackendError('Billing or shipping information is incorrect.', 400, {errors: {shipping: v1.getErrors(), billing: v2.getErrors()}});
         // throw new BackendError('Validation failed', 400, {errors: validation.errors.all()});
     }
 }

@@ -51,4 +51,5 @@ export const checkoutSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { updateBillingField, updateShippingField, updateBillingInfo, updateShippingInfo } = checkoutSlice.actions
 
+export {initCheckout};
 export default checkoutSlice.reducer
