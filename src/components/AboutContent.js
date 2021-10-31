@@ -1,5 +1,6 @@
 import * as React from "react"
 import {StaticImage} from "gatsby-plugin-image"
+import {Link} from "gatsby";
 
 
 const AboutContent = () => (
@@ -27,9 +28,9 @@ const AboutContent = () => (
 Land was acquired with initial fund raising in January 2021. This land will be used to build a new church, rectory and future school.  Fund raising event in January 2022 will be used toward some of the actual construction of these facilities.
 <br />
 <br />
-<button className="border-l-2 border-red-500 text-left pl-10 bg-gray-100 hover:bg-gray-200 text-black py-5 w-full uppercase tracking-wider">
+<Link to={"/forms"}><button className="border-l-2 border-red-500 text-left pl-10 bg-gray-100 hover:bg-gray-200 text-black py-5 w-full uppercase tracking-wider">
 LEARN ABOUT FOUNDATIONAL MASSES
-</button>
+</button></Link>
 <div className="py-10"></div>
 </div>
  </div>
