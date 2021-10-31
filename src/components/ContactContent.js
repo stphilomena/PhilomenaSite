@@ -11,7 +11,7 @@ const ContactContent = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
             <div className="py-10">
                 <div className="centerAll">
-                <StaticImage className="relative w-4/5 mb-0" src="../images/St-Philomena-Relic.png" alt="Blessed Relic of Saint Philomena at the National Shrine" />
+                <StaticImage className="relative w-4/5 mb-0" src="../images/St-Philomena-Relic.png" alt="Blessed Relic of Saint Philomena at the National Shrine in Florida" />
                 </div>
             </div>
         
