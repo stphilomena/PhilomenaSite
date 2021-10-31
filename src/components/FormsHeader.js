@@ -2,7 +2,7 @@ import * as React from "react"
 import {StaticImage} from "gatsby-plugin-image"
 
 
-const AboutHeader = () => (
+const FormsHeader = () => (
    
 <div className="centerAll bg-gradient-to-tl from-blue-500 via-blue-300 to-white pt-5 md:pt-10">
 <StaticImage className="w-1/2 md:w-1/5" src="../images/our_lady_of_victory_chapel.png" alt="Our Lady of Victory in Davie Florida" />
@@ -12,4 +12,4 @@ const AboutHeader = () => (
 </div>
 )
 
-export default AboutHeader
+export default FormsHeader

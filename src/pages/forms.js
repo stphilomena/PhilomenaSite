@@ -3,19 +3,18 @@ import * as React from "react"
 import Seo from "../components/Seo"
 import Menu from "../components/Menu"
 import Layout from "../components/Layout"
-import AboutHeader from "../components/AboutHeader"
-import AboutContent from "../components/AboutContent"
-import AboutAccordion from "../components/AboutAccordion"
+import FormsHeader from "../components/FormsHeader"
+import FormsContent from "../components/FormsContent"
 
 
 const About = () => (
   <Layout>
     
     <Seo title="About The Shrine | National Shrine of Saint Philomena" />
-    <AboutHeader/>
+    <FormsHeader/>
     <Menu/>
-    <AboutContent/>
-    <AboutAccordion/>
+    <FormsContent/>
+    
  <div className="pb-10 lg:pb-20">
 
  </div>
