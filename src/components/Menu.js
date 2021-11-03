@@ -44,6 +44,9 @@ const NewMenu = () => {
         </div>
         </div> 
         </div>
+        <div className="w-screen">
+        <div className={"text-white bg-red-600 hover:bg-red-800 centerAll fixed top-10 right-0 w-20 h-20 transition duration-300 rounded-full  md:p-5 lg:p-5  " + (cartLength>0? "content" : "hidden")} ><Link to="/CartPage"><BsCart3 size="2em"/></Link></div>
+        </div>
         </div>
     
     )
