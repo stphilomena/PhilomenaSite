@@ -159,7 +159,7 @@ const CartPageContent = () => {
 
                                         </div>
                                         <div className=" object-contain col-span-4 sm:col-span-3">
-                                            <GatsbyImage className={"h-32 w-32"} alt={product.title}
+                                            <GatsbyImage className={"h-20 w-20 md:h-32 md:w-32"} alt={product.title}
                                                          image={getImage(product.image)}/>
 
                                         </div>
