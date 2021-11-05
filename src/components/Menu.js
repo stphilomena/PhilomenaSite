@@ -45,7 +45,7 @@ const NewMenu = () => {
         </div> 
         </div>
         <div className="w-screen">
-        <div className={"text-white bg-red-600 z-50 hover:bg-red-800 centerAll fixed top-10 right-0 w-20 h-20 transform transition duration-300 rounded-l-xl  md:p-5 lg:p-5  " + (cartLength>0? "translate-x-20" : "-translate-x-20")} ><Link to="/CartPage"><BsCart3 size="2em"/></Link></div>
+        <div className={"text-white bg-red-600 z-50 hover:bg-red-800 centerAll fixed top-10 right-0 w-20 h-20 transform transition duration-300 rounded-l-xl  md:p-5 lg:p-5  " + (cartLength>0? "-translate-x-20" : "translate-x-20")} ><Link to="/CartPage"><BsCart3 size="2em"/></Link></div>
         </div>
         </div>
     
