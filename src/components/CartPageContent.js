@@ -168,8 +168,7 @@ const CartPageContent = () => {
 
                                 <div className="col-span-2 ">
                                     <div className="grid grid-cols-4  h-32 items-center">
-                                        <div
-                                            className="col-span-4 sm:col-span-3 font-bold text-gray-600 ">{product.title}</div>
+                                        <div className="col-span-4 sm:col-span-3 font-bold text-gray-600 ">{product.title}</div>
                                         <div className="col-span-4 sm:col-span-1 ">{USD_P2(product.price)}</div>
                                     </div>
                                 </div>
@@ -289,10 +288,10 @@ const CartPageContent = () => {
                                           dispatch(updateShippingField({name: "state", value: e.target.valueId}))
                                       }}
                                       placeholder={"State"} required={true}
-                                      className="col-span-2 md:col-span-1 inputField"/>
+                                      className="col-span-4 md:col-span-1 inputField"/>
                             <InputField name={"zip"} value={shippingInfo.zip} setter={setter}
                                         placeholder={"Zip"} required={true} errors={errors.shipping}
-                                        className="col-span-2 md:col-span-1 inputField"/>
+                                        className="col-span-4 md:col-span-1 inputField"/>
 
                         </div>
                     </div>
@@ -337,10 +336,10 @@ const CartPageContent = () => {
                                           dispatch(updateBillingField({name: "state", value: e.target.valueId}))
                                       }}
                                       placeholder={"State"}
-                                      className="col-span-2 md:col-span-1 inputField"/>
+                                      className="col-span-4 md:col-span-1 inputField"/>
                             <InputField name={"zip"} value={billingInfo.zip} setter={setterBilling}
                                         placeholder={"Zip"} required={true} errors={errors.billing}
-                                        className="col-span-2 md:col-span-1 inputField"/>
+                                        className="col-span-4 md:col-span-1 inputField"/>
                         </div>
                     </div>
                 </div>
