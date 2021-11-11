@@ -35,7 +35,7 @@ const MessageContent = () => (
     <div className="pt-10">
         <strong>WHAT WOULD YOU LIKE TO SAY?</strong>
         <div>
-        <input className="border w-10/12 h-48" type="text" name="message" rows="10" cols="30" defaultValue="GREG!!!!  HELP!!!!!"/>
+        <input className="border w-full h-48" type="text" name="message" rows="10" cols="30" defaultValue="GREG!!!!  HELP!!!!!"/>
         </div>
     </div>
                
