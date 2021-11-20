@@ -7,11 +7,13 @@ const ProfileForm = () => (
    
 <div className="w-screen centerAll">
 <div className="w-10/12">
+
+
     <form className=" py-20">
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div className="bg-red-700 h-full centerAll">PICTURE</div>
 <div className="grid grid-cols-2 gap-4">
-<div>FIRST NAME</div>
+<div><label>First Name: <input type="text" name="firstName" />  </label></div>
 <div>LAST NAME</div>
 <div>TELEPHONE</div>
 <div>EMAIL</div>
@@ -79,6 +81,8 @@ const ProfileForm = () => (
     </button>
 </div>
 </form>
+
+
 </div>
 </div>
 )
