@@ -66,7 +66,7 @@ const ProfileForm = () => (
 <div className="grid grid-cols-2">
 <div className="col-span-2">Are You Married? ( ) YES     ( ) NO</div>
 <div>Spouse First Name</div>
-<div>Spouse Last Name </div>
+<div>Spouse Last Name</div>
 <div>Spouse Telephone</div>
 <div>Spouse EMail</div>
 <div className="col-span-2">Do You Have Kids? ( ) YES     ( ) NO</div>
