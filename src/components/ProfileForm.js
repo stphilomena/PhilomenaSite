@@ -11,54 +11,56 @@ const ProfileForm = () => (
 
     <form className=" py-20">
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div className="bg-red-700 h-full centerAll">PICTURE</div>
+<div className="bg-red-700 h-full centerAll">UPLOAD PICTURE</div>
 <div className="grid grid-cols-2 gap-4">
-<div><label>First Name: <input type="text" name="firstName" />  </label></div>
-<div>LAST NAME</div>
-<div>TELEPHONE</div>
-<div>EMAIL</div>
-<div className="col-span-2">OCCUPATION</div>
-<div>DATE OF BIRTH</div>
-<div>MEMBER SINCE</div>
+<div><input type="text" name="firstName" className="inputField w-full" placeholder="First Name"/></div>
+<div><input type="text" name="lastName" className="inputField w-full" placeholder="Last Name"/></div>
+<div><input type="tel" name="telephone" className="inputField w-full" placeholder="Telephone"/></div>
+<div><input type="email" name="email" className="inputField w-full" placeholder="E-Mail Address"/></div>
+<div className="col-span-2"><input type="text" name="occupation" className="inputField w-full" placeholder="Occupation"/></div>
+<div>Date of Birth: <input type="date" name="DOB" className="inputField w-full"/></div>
+<div>Member Since: <input type="date" name="memberSince" className="inputField w-full"/></div>
 </div>
 </div>
-<div className="bg-gray-500">
-<div>ADDRESS</div>
-<div>ADDRESS</div>
-<div className="grid grid-cols-4">
-<div className="col-span-4 md:col-span-2">CITY</div>
-<div className="col-span-2 md:col-span-1">STATE</div>
-<div className="col-span-2 md:col-span-1">ZIP</div>
+<div className="py-10">
+<div className="grid grid-cols-4 gap-4">
+<div className='col-span-4 lg:col-span-3'><input type="text" name="address1" className="inputField w-full" placeholder="Street Address"/></div>
+<div className="col-span-4 lg:col-span-1"><input type="text" name="address2" className="inputField w-full" placeholder="Apt / Suite / Unit"/></div>
+<div className="col-span-4 lg:col-span-2"><input type="text" name="city" className="inputField w-full" placeholder="City"/></div>
+<div className="col-span-2 lg:col-span-1"><input type="text" name="state" className="inputField w-full" placeholder="State"/></div>
+<div className="col-span-2 lg:col-span-1"><input type="text" name="zip" className="inputField w-full" placeholder="Zip Code"/></div>
 </div>
 <div className="centerAll font-bold py-5">SACRAMENTS RECEIVED</div>
-<div className="grid grid-cols-3">
+<div className="grid grid-cols-3 gap-4">
 <div>Sacrament</div>
 <div>When?</div>
 <div>Where?</div>
-<div>Baptism</div>
-<div>- - - - </div>
-<div>- - - - </div>
-<div>Confession</div>
-<div>- - - - </div>
-<div>- - - - </div>
-<div>Communnion</div>
-<div>- - - - </div>
-<div>- - - - </div>
-<div>Confirmation</div>
-<div>- - - - </div>
-<div>- - - - </div>
-<div>Marriage</div>
-<div>- - - - </div>
-<div>- - - - </div>
-<div>Extreme Unction</div>
-<div>- - - - </div>
-<div>- - - - </div>
+<div><input type="checkbox" name="baptism" value="YES"/> Baptism</div>
+<div><input type="date" name="baptismDate" className="inputField w-full"/></div>
+<div><input type="text" name="baptismPlace" className="inputField w-full"/></div>
+<div><input type="checkbox" name="confession" value="YES"/> Confession</div>
+<div><input type="date" name="confessionDate" className="inputField w-full"/></div>
+<div><input type="text" name="confessionPlace" className="inputField w-full"/></div>
+<div><input type="checkbox" name="communion" value="YES"/> Communion</div>
+<div><input type="date" name="communionDate" className="inputField w-full"/></div>
+<div><input type="text" name="communionPlace" className="inputField w-full"/></div>
+<div><input type="checkbox" name="confirmation" value="YES"/> Confirmation</div>
+<div><input type="date" name="confirmationDate" className="inputField w-full"/></div>
+<div><input type="text" name="confirmationPlace" className="inputField w-full"/></div>
+<div><input type="checkbox" name="matrimony" value="YES"/> Matrimony</div>
+<div><input type="date" name="matrimonyDate" className="inputField w-full"/></div>
+<div><input type="text" name="matrimonyPlace" className="inputField w-full"/></div>
+<div><input type="checkbox" name="extremeUnction" value="YES"/> Extreme Unction</div>
+<div><input type="date" name="unctionDate" className="inputField w-full"/></div>
+<div><input type="text" name="unctionPlace" className="inputField w-full"/></div>
 </div>
-<div className="centerAll font-bold py-5">AFFILIATIONS</div>
-<div className="grid grid-cols-3">
-<div>Holy Name of Jesus</div>
-<div>Women's League</div>
-<div>Third Order of the SSPX</div>
+<div className="centerAll font-bold py-5">GROUPS / AFFILIATIONS</div>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+<div><input type="checkbox" name="schola" value="YES"/> Schola</div>
+<div><input type="checkbox" name="choir" value="YES"/> Choir</div>
+<div><input type="checkbox" name="holyNameofJesus" value="YES"/> Holy Name of Jesus</div>
+<div><input type="checkbox" name="womensLeague" value="YES"/> Women's League</div>
+<div><input type="checkbox" name="thirdOrder" value="YES"/> Third Order of the SSPX</div>
 </div>
 <div className="centerAll font-bold py-5">FAMILY INFORMATION</div>
 <div className="grid grid-cols-2">
