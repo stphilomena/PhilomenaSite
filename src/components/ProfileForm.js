@@ -68,7 +68,7 @@ const ProfileForm = () => (
 <div>Spouse First Name</div>
 <div>Spouse Last Name</div>
 <div>Spouse Telephone</div>
-<div>Spouse EMail</div>
+<div>Spouse E-Mail</div>
 <div className="col-span-2">Do You Have Kids? ( ) YES     ( ) NO</div>
 <div>Spouse First Name</div>
 <div>Spouse Last Name</div>
