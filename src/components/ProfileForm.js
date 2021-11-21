@@ -55,7 +55,7 @@ const ProfileForm = () => (
 <div><input type="text" name="unctionPlace" className="inputField w-full"/></div>
 </div>
 <div className="centerAll font-bold py-5">GROUPS / AFFILIATIONS</div>
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+<div className="grid grid-cols-1 md:grid-cols-2 lg">
 <div><input type="checkbox" name="schola" value="YES"/> Schola</div>
 <div><input type="checkbox" name="choir" value="YES"/> Choir</div>
 <div><input type="checkbox" name="holyNameofJesus" value="YES"/> Holy Name of Jesus</div>
