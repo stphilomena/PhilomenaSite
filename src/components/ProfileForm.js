@@ -32,7 +32,7 @@ const ProfileForm = () => (
 </div>
 <div className="centerAll font-bold py-5">SACRAMENTS RECEIVED</div>
 <div className="grid grid-cols-3 gap-4">
-<div>Sacrament</div>
+<div>Sacrament </div>
 <div>When?</div>
 <div>Where?</div>
 <div><input type="checkbox" name="baptism" value="YES"/> Baptism</div>
