@@ -70,7 +70,7 @@ const CartPageContent = () => {
         // });
 
     }
-    const onSuccess = () => {
+    const onApprove = () => {
         console.log('Success!')
         dispatch(clearCart())
         window.location = '/CartPageContentSuccessful'
@@ -364,7 +364,7 @@ const CartPageContent = () => {
                 {/*</button>*/}
                 <Paypal createOrder={submitOrder}
                         onError={onError}
-                        onSuccess={onSuccess}
+                        onApprove={onApprove}
                 />
             </div>
             <div className="py-10">
