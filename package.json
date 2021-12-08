@@ -17,6 +17,7 @@
     "gatsby": "^3.14.6",
     "gatsby-node-helpers": "^1.2.1",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
+    "gatsby-plugin-google-gtag": "^4.3.0",
     "gatsby-plugin-image": "^1.11.0",
     "gatsby-plugin-manifest": "^3.6.0",
     "gatsby-plugin-offline": "^4.6.0",
