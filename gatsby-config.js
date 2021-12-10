@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     title: `The National Shrine of Saint Philomena`,
     description: `Welcome to the National Shrine of Saint Philomena, a beautiful Virgin and Martyr powerful with God.`,
-    author: `SSPX Davie`,
+    author: `SSPX Davie in Broward County, FL`,
   },
   plugins: [
     {
