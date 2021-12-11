@@ -1,5 +1,3 @@
-const { options } = require("joi")
-
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -27,7 +25,7 @@ module.exports = {
         },
       },
     },
-
+    
     'gatsby-plugin-postcss',
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
@@ -37,13 +35,6 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
-    },
-    {
-      resolve:`gatsby-source-contentful`,
-      options:{
-        spaceID:`jr1pigd9tr2u`,
-        accessToken:`DYo-for9drgxB63XQC4XEGHzp3TYoUBgQgy2EOoBg9o`,
-      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

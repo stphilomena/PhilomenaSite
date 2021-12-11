@@ -1,9 +1,75 @@
 {
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "contentful": "^9.1.5",
-    "gatsby": "^4.3.0",
-    "gatsby-source-contentful": "^7.1.0",
-    "gatsby-source-package": "^1.0.0",
-    "uuid": "^7.0.3"
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@material-ui/icons": "^4.11.2",
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@reduxjs/toolkit": "^1.6.2",
+    "babel-eslint": "^10.1.0",
+    "camelcase": "^6.2.0",
+    "currency.js": "^2.0.4",
+    "dotenv": "^10.0.0",
+    "gatsby": "^3.14.6",
+    "gatsby-node-helpers": "^1.2.1",
+    "gatsby-plugin-gatsby-cloud": "^2.6.1",
+    "gatsby-plugin-image": "^1.11.0",
+    "gatsby-plugin-manifest": "^3.6.0",
+    "gatsby-plugin-offline": "^4.6.0",
+    "gatsby-plugin-paypal": "alexislepresle/gatsby-plugin-paypal",
+    "gatsby-plugin-react-helmet": "^4.6.0",
+    "gatsby-plugin-sharp": "^3.6.0",
+    "gatsby-source-filesystem": "^3.12.0",
+    "gatsby-transformer-sharp": "^3.6.0",
+    "google-auth-library": "^7.10.1",
+    "googleapis": "^89.0.0",
+    "lodash.throttle": "^4.1.1",
+    "node-fetch": "^3.0.0",
+    "node-google-drive": "^1.1.2",
+    "node-sheets": "^1.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "react-redux": "^7.2.5",
+    "redux": "^4.1.1",
+    "slug": "^5.1.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "Validator": "^1.1.4",
+    "autoprefixer": "^10.2.6",
+    "eslint": "^7.32.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-react": "^7.24.0",
+    "gatsby-plugin-postcss": "^4.8.0",
+    "postcss": "^8.3.5",
+    "prettier": "2.2.1",
+    "tailwindcss": "^2.2.4"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
