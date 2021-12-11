@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "contentful": "^9.1.5"
+    "contentful": "^9.1.5",
+    "gatsby": "^4.3.0",
+    "gatsby-source-contentful": "^7.1.0",
+    "gatsby-source-package": "^1.0.0",
+    "uuid": "^7.0.3"
   }
 }
