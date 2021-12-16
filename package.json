@@ -15,7 +15,7 @@
     "camelcase": "^6.2.0",
     "currency.js": "^2.0.4",
     "dotenv": "^10.0.0",
-    "gatsby": "^3.14.6",
+    "gatsby": "^4.4.0",
     "gatsby-core-utils": "^3.3.0",
     "gatsby-node-helpers": "^1.2.1",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
