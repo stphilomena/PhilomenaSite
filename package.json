@@ -22,7 +22,7 @@
     "gatsby-plugin-image": "^1.11.0",
     "gatsby-plugin-manifest": "^3.6.0",
     "gatsby-plugin-offline": "^4.6.0",
-    "gatsby-plugin-paypal": "github:alexislepresle/gatsby-plugin-paypal",
+    "gatsby-plugin-paypal": "^1.1.6",
     "gatsby-plugin-react-helmet": "^4.6.0",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.12.0",
@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "Validator": "^1.1.4",
     "autoprefixer": "^10.2.6",
     "babel-preset-gatsby": "^2.3.0",
     "eslint": "^7.32.0",
@@ -53,8 +54,7 @@
     "gatsby-plugin-postcss": "^4.8.0",
     "postcss": "^8.3.5",
     "prettier": "2.2.1",
-    "tailwindcss": "^2.2.4",
-    "Validator": "^1.1.4"
+    "tailwindcss": "^2.2.4"
   },
   "keywords": [
     "gatsby"
