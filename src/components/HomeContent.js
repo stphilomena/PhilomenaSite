@@ -15,7 +15,7 @@ const HomeContent = () => {
         query MyQuery {
             inventory: allGoogleSpreadsheetInventoryInventory(
               sort: {fields: itemId, order: DESC}
-              filter: {option1Quantity: {ne: "0"}}
+              filter: {option1Quantity: {ne: 0}}
               limit: 4
             ) {
               nodes {
