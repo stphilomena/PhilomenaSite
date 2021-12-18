@@ -151,3 +151,20 @@ function toNode(row, index) {
     node["rowIndex"] = index;
     return node;
 }
+exports.createSchemaCustomization = ({ actions }) => {
+    const { createTypes } = actions;
+    const typeDefs = `
+      type GoogleSpreadsheetInventoryInventory implements Node {
+           option1Name: String
+           option1Price: Float
+           option1Quantity: Int
+           option2Name: String
+           option2Price: Float
+           option2Quantity: Int
+           title: String
+           description: String
+           noShipping: String
+           image: File!
+      } `;
+    createTypes(typeDefs)
+}
