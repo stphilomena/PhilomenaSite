@@ -25,6 +25,7 @@ const NewMenu = () => {
             <li><Link to="/shop"><div className="menuLink3">Shop</div></Link></li>
             <li><Link to="/about"><div className="menuLink3">About Us</div></Link></li>
             <li><Link to="/contact"><div className="menuLink3">Contact Us</div></Link></li>
+            <li><Link to="https://www.givebutter.com/davie"><div className="menuLink3">Tickets</div></Link></li>
             <li><Link to="https://www.paypal.com/fundraiser/charity/4432015"><div className="menuLink3">Donate</div></Link></li>
             </ul>
         </div>
@@ -38,6 +39,7 @@ const NewMenu = () => {
             <li><Link to="/shop"><div className="menuLink3">Shop</div></Link></li>
             <li><Link to="/about"><div className="menuLink3">About Us</div></Link></li>
             <li><Link to="/contact"><div className="menuLink3">Contact Us</div></Link></li>
+            <li><Link to="https://www.givebutter.com/davie"><div className="menuLink3">Tickets</div></Link></li>
             <li><Link to="https://www.paypal.com/fundraiser/charity/4432015"><div className="menuLink3 ">Donate</div></Link></li>
             </ul>
             <div className={" transition duration-300 py-2 px-3 md:px-3 lg:px-5 h-full " + (cartLength>0? "bg-red-500 text-white hover:bg-red-700" : "bg-gray-300 text-gray-600")} ><Link to="/CartPage"><BsCart3 size="1.5em"/></Link></div>
