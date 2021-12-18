@@ -126,7 +126,7 @@ exports.onCreateNode = async ({node, actions, store, getCache, createNodeId}) =>
             createNodeId, // helper function in gatsby-node to generate the node id
         });
         if (fileNode) {
-            node.image___NODE = fileNode.id;
+            node.image = fileNode.id;
         }
     }
 };
