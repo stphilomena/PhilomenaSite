@@ -164,7 +164,7 @@ exports.createSchemaCustomization = ({ actions }) => {
            title: String
            description: String
            noShipping: String
-           image: File@link
+           image: File @link
       } `;
     createTypes(typeDefs)
 }
