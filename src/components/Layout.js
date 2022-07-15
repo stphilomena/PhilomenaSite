@@ -7,37 +7,21 @@
 
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+// import { useStaticQuery, graphql } from "gatsby"
 import Footer from "./Footer"
 // import SideCart from "./SideCart";
 
 const Layout = ({ children, noCart }) => {
-  const { allContentfulProducts } = useStaticQuery(
-    graphql`
-      query ProductsQuery {
-        contentfulShopProducts {
-          category
-          option1name
-          option1price
-          shippingCharge
-          taxCharge
-          title
-          createdAt
-          contentfulid
-          childContentfulShopProductsDescriptionTextNode {
-            description
-          }
-          option1qty
-          option2name
-          option2price
-          option2qty
-          slug
-          image
-        }
-      }
-    `
-  )
-  debugger
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
+  //
 
   return (
     <>
