@@ -90,7 +90,7 @@ const NewMenu = () => {
               </li>
               <li>
                 <Link to="/contact">
-                  <div className="menuLink3">Contact Us</div>
+                  <div className="menuLink3">Contact</div>
                 </Link>
               </li>
               <li>
