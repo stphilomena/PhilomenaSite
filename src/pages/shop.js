@@ -27,13 +27,15 @@ export const query = graphql`
         }
         category
         updatedAt
+        localImage {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
       }
       pageInfo {
         perPage
       }
-    }
-    imageSharp {
-      gatsbyImageData(blurredOptions: { width: 100 }, placeholder: BLURRED)
     }
   }
 `

@@ -6,154 +6,195 @@
 
 // You can delete this file if you're not using it
 
-const Sheets = require("node-sheets").default;
-const createNodeHelpers = require("gatsby-node-helpers");
-const NodeGoogleDrive = require('node-google-drive');
-const camelCase = require("camelcase");
-const credentials = require('./philomena-site-93dddf35c845.json')
-const { createRemoteFileNode, createFileNodeFromBuffer } = require('gatsby-source-filesystem');
-const fs = require('fs');
-const path = require('path');
-const slug = require('slug')
-const google = require('googleapis');
+const Sheets = require("node-sheets").default
+const createNodeHelpers = require("gatsby-node-helpers")
+const NodeGoogleDrive = require("node-google-drive")
+const camelCase = require("camelcase")
+const credentials = require("./philomena-site-93dddf35c845.json")
+const {
+  createRemoteFileNode,
+  createFileNodeFromBuffer,
+} = require("gatsby-source-filesystem")
+const fs = require("fs")
+const path = require("path")
+const slug = require("slug")
+const google = require("googleapis")
 
-exports.createPages = async({graphql, actions}) => {
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage, createRedirect } = actions
+  const productDetailTemplate = path.resolve(`src/templates/product.js`)
 
-const {createPage, createRedirect} = actions;
-const productDetailTemplate = path.resolve(`src/templates/product.js`);
-
-await graphql(`
-query {
-    products: allGoogleSpreadsheetInventoryInventory {
-      nodes {
-        itemId
-        title
-        slug
+  await graphql(`
+    query {
+      products: allGoogleSpreadsheetInventoryInventory {
+        nodes {
+          itemId
+          title
+          slug
+        }
       }
     }
-  }
-  
-`).then(async result => {
-    if(result.errors) {
-        throw result.errors
+  `).then(async (result) => {
+    if (result.errors) {
+      throw result.errors
     }
-    result.data.products.nodes.forEach(product => {
-        console.log(product)
-        createPage({
-            path: product.slug,
-            component: productDetailTemplate,
-            context: {id: product.itemId}
-        })
-    });
-})
+    result.data.products.nodes.forEach((product) => {
+      console.log(product)
+      createPage({
+        path: product.slug,
+        component: productDetailTemplate,
+        context: { id: product.itemId },
+      })
+    })
+  })
 }
 
-exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store, getCache }) => {
-    const {createNode} = actions;
-    const typePrefix = "GoogleSpreadsheet";
-    const filterNode = (node) => node.itemId;
-    const mapNode = node => node;
-    const spreadsheetName = 'Inventory';
-    const spreadsheetId = '1wyRPydG-zHdvJLPYAbQnp6oIAZ6WlZbetDz_ApbkcQI';
-    const IMAGE_FOLDER = '1w3-CRBAssjTOCj2qRK1YlURaxJQiASnW';
-    const googleDriveInstance = new NodeGoogleDrive({ROOT_FOLDER: IMAGE_FOLDER});
-    let gdrive = await googleDriveInstance.useServiceAccountAuth(credentials);
-    // List Folders under the root folder
-    let folderResponse = await googleDriveInstance.listFiles(IMAGE_FOLDER, null, false) ; // (IMAGE_FOLDER);
-    // console.log(folderResponse.files);
-    // console.log(file)
-    const gs = new Sheets(spreadsheetId);
+// graphql / schema customization / resolvers for 3rd party images in Graphql
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    ContentfulShopProducts: {
+      localImage: {
+        type: "File",
+        resolve: async (source, args, context, info) => {
+          const relativePath = source.image.replace(/[.][.]\/images\//, "")
+          return context.nodeModel.findOne({
+            type: File,
+            query: { filter: { relativePath: { eq: relativePath } } },
+          })
+        },
+      },
+    },
+  }
+  createResolvers(resolvers)
+}
 
-    if (credentials) {
-        await gs.authorizeJWT(credentials);
+exports.sourceNodes = async ({
+  actions,
+  createNodeId,
+  createContentDigest,
+  store,
+  getCache,
+}) => {
+  const { createNode } = actions
+  const typePrefix = "GoogleSpreadsheet"
+  const filterNode = (node) => node.itemId
+  const mapNode = (node) => node
+  const spreadsheetName = "Inventory"
+  const spreadsheetId = "1wyRPydG-zHdvJLPYAbQnp6oIAZ6WlZbetDz_ApbkcQI"
+  const IMAGE_FOLDER = "1w3-CRBAssjTOCj2qRK1YlURaxJQiASnW"
+  const googleDriveInstance = new NodeGoogleDrive({ ROOT_FOLDER: IMAGE_FOLDER })
+  let gdrive = await googleDriveInstance.useServiceAccountAuth(credentials)
+  // List Folders under the root folder
+  let folderResponse = await googleDriveInstance.listFiles(
+    IMAGE_FOLDER,
+    null,
+    false
+  ) // (IMAGE_FOLDER);
+  // console.log(folderResponse.files);
+  // console.log(file)
+  const gs = new Sheets(spreadsheetId)
+
+  if (credentials) {
+    await gs.authorizeJWT(credentials)
+  }
+
+  const promises = (await gs.getSheetsNames()).map(async (sheetTitle) => {
+    const tables = await gs.tables(sheetTitle)
+    const { rows } = tables
+    await Promise.all(
+      rows
+        .map(toNode)
+        .filter(filterNode)
+        .map(mapNode)
+        .map(async (node, i) => {
+          const hasProperties = Object.values(node).some(
+            (value) => value !== null
+          )
+          if (hasProperties) {
+            if (node.picture) {
+              console.log(`Finding picture ${node.picture}`)
+              // let file = await googleDriveInstance.getFile(folderResponse.files.find(f => f.name === node.picture));
+              let fileInfo = folderResponse.files.find(
+                (f) => f.name === node.picture
+              )
+              if (fileInfo) {
+                let file = await googleDriveInstance.getFile(fileInfo)
+                console.log("Created picture", file)
+                // const dest = 'src/images/drive/' + node.picture;
+                // console.log('Copy', file, dest);
+                // fs.copyFileSync(file, dest);
+                // node.picture = dest;
+                node.picture = file
+              } else node.picture = null
+            } else node.picture = null
+            createNode({
+              ...node,
+              id: createNodeId(
+                `${typePrefix} ${spreadsheetName} ${sheetTitle} ${i}`
+              ),
+              slug: slug(node.title + " " + node.itemId),
+              internal: {
+                type: `${typePrefix}${spreadsheetName}${sheetTitle}`,
+                contentDigest: createContentDigest(node),
+              },
+            })
+          }
+        })
+    )
+  })
+  return Promise.all(promises)
+}
+
+exports.onCreateNode = async ({
+  node,
+  actions,
+  store,
+  getCache,
+  createNodeId,
+}) => {
+  if (node.internal.type === "GoogleSpreadsheetInventoryInventory") {
+    const { createNode } = actions
+    if (!node.picture) return
+
+    console.log("Converting picture", node.picture)
+    const buffer = fs.readFileSync(node.picture)
+    const fileNode = await createFileNodeFromBuffer({
+      buffer, // string that points to the URL of the image
+      parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+      store, // Gatsby's redux store
+      getCache, // get Gatsby's cache
+      createNode, // helper function in gatsby-node to generate the node
+      createNodeId, // helper function in gatsby-node to generate the node id
+    })
+    if (fileNode) {
+      node.image = fileNode.id
     }
-
-    const promises = (await gs.getSheetsNames()).map(async sheetTitle => {
-        const tables = await gs.tables(sheetTitle);
-        const {rows} = tables;
-        await Promise.all(
-        rows
-            .map(toNode)
-            .filter(filterNode)
-            .map(mapNode)
-            .map(async (node, i) => {
-                const hasProperties = Object.values(node).some(value => value !== null);
-                if (hasProperties) {
-                    if(node.picture) {
-                        console.log(`Finding picture ${node.picture}`)
-                        // let file = await googleDriveInstance.getFile(folderResponse.files.find(f => f.name === node.picture));
-                        let fileInfo = folderResponse.files.find(f => f.name === node.picture);
-                        if (fileInfo) {
-                            let file = await googleDriveInstance.getFile(fileInfo);
-                            console.log('Created picture', file)
-                            // const dest = 'src/images/drive/' + node.picture;
-                            // console.log('Copy', file, dest);
-                            // fs.copyFileSync(file, dest);
-                            // node.picture = dest;
-                            node.picture = file;
-                        } else node.picture = null;
-                    } else node.picture = null;
-                    createNode({
-                        ...node,
-                        id: createNodeId(`${typePrefix} ${spreadsheetName} ${sheetTitle} ${i}`),
-                        slug: slug(node.title + " " + node.itemId),
-                        internal: {
-                            type: `${typePrefix}${spreadsheetName}${sheetTitle}`,
-                            contentDigest: createContentDigest(node)
-                        }
-                    });
-                }
-            }));
-    });
-    return Promise.all(promises);
-};
-
-
-exports.onCreateNode = async ({node, actions, store, getCache, createNodeId}) => {
-
-    if (node.internal.type === 'GoogleSpreadsheetInventoryInventory') {
-        const { createNode } = actions;
-        if(!node.picture) return;
-
-        console.log('Converting picture', node.picture)
-        const buffer = fs.readFileSync(node.picture);
-        const fileNode = await createFileNodeFromBuffer({
-            buffer, // string that points to the URL of the image
-            parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
-            store, // Gatsby's redux store
-            getCache, // get Gatsby's cache
-            createNode, // helper function in gatsby-node to generate the node
-            createNodeId, // helper function in gatsby-node to generate the node id
-        });
-        if (fileNode) {
-            node.image = fileNode.id;
-        }
-    }
-};
+  }
+}
 
 function toNode(row, index) {
-    let node = Object.entries(row).reduce((obj, [key, cell]) => {
-        if (key === undefined || key === "undefined") {
-            return obj;
-        }
+  let node = Object.entries(row).reduce((obj, [key, cell]) => {
+    if (key === undefined || key === "undefined") {
+      return obj
+    }
 
-        // `node-sheets` adds default values for missing numbers and dates, by checking
-        // for the precense of `stringValue` (the formatted value), we can ensure that
-        // the value actually exists.
-        const value =
-            typeof cell === "object" && cell.stringValue !== undefined
-                ? cell.value
-                : null;
-        obj[camelCase(key)] = value;
+    // `node-sheets` adds default values for missing numbers and dates, by checking
+    // for the precense of `stringValue` (the formatted value), we can ensure that
+    // the value actually exists.
+    const value =
+      typeof cell === "object" && cell.stringValue !== undefined
+        ? cell.value
+        : null
+    obj[camelCase(key)] = value
 
-        return obj;
-    }, {});
-    node["rowIndex"] = index;
-    return node;
+    return obj
+  }, {})
+  node["rowIndex"] = index
+  return node
 }
 exports.createSchemaCustomization = ({ actions }) => {
-    const { createTypes } = actions;
-    const typeDefs = `
+  const { createTypes } = actions
+  const typeDefs = `
       type GoogleSpreadsheetInventoryInventory implements Node {
            option1Name: String
            option1Price: Float
@@ -165,6 +206,6 @@ exports.createSchemaCustomization = ({ actions }) => {
            description: String
            noShipping: String
            image: File @link
-      } `;
-    createTypes(typeDefs)
+      } `
+  createTypes(typeDefs)
 }
