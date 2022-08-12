@@ -58,7 +58,7 @@ exports.createResolvers = ({ createResolvers }) => {
         resolve: async (source, args, context, info) => {
           const relativePath = source.image.replace(/[.][.]\/images\//, "")
           return context.nodeModel.findOne({
-            type: File,
+            type: "File",
             query: { filter: { relativePath: { eq: relativePath } } },
           })
         },

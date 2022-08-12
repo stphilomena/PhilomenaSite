@@ -42,6 +42,9 @@ export const query = graphql`
 
 const Shop = ({ data }) => {
   const productsData = data.allContentfulShopProducts.nodes
+  const image = getImage(productsData.localImage)
+
+  console.log(image)
 
   return (
     <Layout>
@@ -55,12 +58,12 @@ const Shop = ({ data }) => {
               to="/shop/"
               className="group flex flex-col items-center text-center gap-3 text-gray-600 uppercase"
             >
-              <StaticImage
+              <GatsbyImage
+                image={getImage(productsData.localImage)}
                 alt={productsData.title}
-                src="../images/48-inch-st-philomena-cord.jpg"
-                className="opacity-90 group-hover:opacity-100"
               />
               {productsData.title}
+              <p className="text-5xl">{image}</p>
               <button className="bg-red-700 block mx-auto px-4 py-2 rounded-md text-white">
                 ADD TO CART
               </button>
