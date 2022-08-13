@@ -51,20 +51,36 @@ const Shop = ({ data }) => {
       <Seo title="Shop Devotional Items | National Shrine of Saint Philomena" />
       <HomeHeader />
       <Menu />
-      <div className="centerAll py-10 w-10/12 mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="centerAll py-10 w-10/12 max-w-[1366px] mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5">
           {productsData.map((productsData) => (
-            <div
-              to="/shop/"
-              className="group flex flex-col items-center text-center gap-3 text-gray-600 uppercase"
-            >
-              <GatsbyImage
-                image={getImage(productsData.localImage)}
-                alt={productsData.title}
-              />
-              {productsData.title}
-              <p className="text-5xl">{image}</p>
-              <button className="bg-red-700 block mx-auto px-4 py-2 rounded-md text-white">
+            <div className="group relative border border-gray-200 rounded-lg hover:shadow-lg duration-200 flex flex-col items-center text-center gap-3 text-gray-600 uppercase">
+              <Link to={productsData.slug}>
+                <GatsbyImage
+                  image={getImage(productsData.localImage)}
+                  alt={productsData.title}
+                  className="rounded-t-lg"
+                />
+              </Link>
+              <h2 className="text-sm md:text-base px-2 lg:text-xl font-bold uppercase line-clamp-1">
+                {productsData.title}
+              </h2>
+              <div className="flex flex-row justify-around w-full h-10">
+                <p className="text-3xl text-red-700 font-bold">
+                  ${productsData.option1price}
+                </p>
+                <div className="flex flex-row justify-around items-center">
+                  <p className="rounded-full hover:bg-gray-100 h-8 w-8 flex items-center justify-center mx-2 border border-gray-300 cursor-pointer">
+                    -
+                  </p>
+                  <p>00</p>
+                  <p className="rounded-full hover:bg-gray-100 h-8 w-8 flex items-center justify-center mx-2 border border-gray-300 cursor-pointer">
+                    +
+                  </p>
+                </div>
+              </div>
+
+              <button className=" bg-red-700 hover:bg-red-600 w-full rounded-b-lg h-10 text-sm text-white">
                 ADD TO CART
               </button>
             </div>
