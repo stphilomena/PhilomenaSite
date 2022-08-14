@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Seo from "../components/Seo"
@@ -44,7 +45,7 @@ const Shop = ({ data }) => {
   const productsData = data.allContentfulShopProducts.nodes
   const image = getImage(productsData.localImage)
 
-  console.log(image)
+  const [currentQty, setCurrentQty] = useState(1)
 
   return (
     <Layout>
@@ -70,13 +71,23 @@ const Shop = ({ data }) => {
                   ${productsData.option1price}
                 </p>
                 <div className="flex flex-row justify-around items-center">
-                  <p className="rounded-full hover:bg-gray-100 h-8 w-8 flex items-center justify-center mx-2 border border-gray-300 cursor-pointer">
+                  <button
+                    onClick={() => {
+                      setCurrentQty(currentQty - 1)
+                    }}
+                    className="rounded-full hover:bg-gray-100 h-8 w-8 flex items-center justify-center border border-gray-300"
+                  >
                     -
-                  </p>
-                  <p>00</p>
-                  <p className="rounded-full hover:bg-gray-100 h-8 w-8 flex items-center justify-center mx-2 border border-gray-300 cursor-pointer">
+                  </button>
+                  <p className="w-8 mx-1">{currentQty}</p>
+                  <button
+                    onClick={() => {
+                      setCurrentQty(currentQty + 1)
+                    }}
+                    className="rounded-full hover:bg-gray-100 h-8 w-8 flex items-center justify-center border border-gray-300 cursor-pointer"
+                  >
                     +
-                  </p>
+                  </button>
                 </div>
               </div>
 
