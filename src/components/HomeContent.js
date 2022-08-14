@@ -5,59 +5,7 @@ import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { USD_P2 } from "../helpers/NumberHelper"
 
-import { useDispatch } from "react-redux"
-import { addProduct } from "../state/cart"
-
 const HomeContent = () => {
-  const { inventory } = useStaticQuery(
-    graphql`
-      query MyQuery {
-        inventory: allGoogleSpreadsheetInventoryInventory(
-          sort: { fields: itemId, order: DESC }
-          filter: { option1Quantity: { ne: 0 } }
-          limit: 4
-        ) {
-          nodes {
-            id
-            itemId
-            picture
-            slug
-            option1Name
-            option1Price
-            option1Quantity
-            option2Name
-            option2Price
-            option2Quantity
-            noShipping
-            image {
-              childImageSharp {
-                gatsbyImageData(placeholder: BLURRED)
-              }
-            }
-            title
-            description
-          }
-        }
-      }
-    `
-  )
-
-  const items = inventory.nodes
-  console.log(items)
-
-  const dispatch = useDispatch()
-  const onAddToCart = (item) =>
-    dispatch(
-      addProduct({
-        ...item,
-        name: item.option1Name,
-        price: item.option1Price,
-        qty: 1,
-        availQty: item.option1Quantity,
-        noShipping: item.noShipping,
-      })
-    )
-
   return (
     <div>
       <div className="">
@@ -115,38 +63,7 @@ const HomeContent = () => {
                   DEVOTIONAL ITEMS
                 </h2>
               </div>
-              <div className="">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 py-5">
-                  {items.map((item) => (
-                    <div
-                      key={item.id}
-                      className="relative w-full bg-white shadow-xl pb-10"
-                    >
-                      <Link to={"/" + item.slug}>
-                        <GatsbyImage
-                          alt={item.title}
-                          image={getImage(item.image)}
-                        />
-                      </Link>
-                      <div className="p-5">
-                        <h3 className="font-bold">{item.title}</h3>
-                        <p className="text-gray-700 hidden md:block">
-                          {item.description}
-                        </p>
-                        <p className="text-gray-700">
-                          Price: {USD_P2(item.option1Price)}
-                        </p>
-                      </div>
-                      <button
-                        className="absolute mb-0 inset-x-0 bottom-0 w-full bg-red-600  p-3 text-white hover:bg-red-800"
-                        onClick={() => onAddToCart(item)}
-                      >
-                        ADD TO CART
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <div className=""></div>
             </div>
           </div>
         </section>
